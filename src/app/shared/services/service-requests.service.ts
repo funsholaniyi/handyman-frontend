@@ -20,7 +20,7 @@ export class ServiceRequestsService {
   }
 
   getServiceRequests(userId: string): Observable<ServiceRequestsModel[]> {
-    const endpoint = rootEndPoint + userId + '/requests';
+    const endpoint = rootEndPoint + 'orders' + '/'+userId;
     return this.http.get<ServiceRequestsModel[]>(endpoint);
   }
 

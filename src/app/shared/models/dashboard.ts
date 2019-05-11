@@ -48,8 +48,8 @@ export const dashBoardOverViewSample = {
   userCompletedTaskCount: 2
 };
 export const userDashboardOverviewSample: UserDashboardOverview = {
-  reports: 0,
-  customers: 0,
-  requests: 0,
-  walletBalance: 153.23
+  reports: 1,
+  customers: 1,
+  requests: 1,
+  walletBalance: 2153.23
 };

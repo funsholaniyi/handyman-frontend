@@ -1,0 +1,84 @@
+<div class="cm_page_body_main">
+  <div class="cm_page_body_wrapper">
+
+    <div class="detail_control">
+      <a routerLink="/service-requests"
+         class="back_btn" title="Go Back">
+                                    <span class="back_icon">
+                                        <i class="material-icons">arrow_back</i>
+                                    </span>
+        <span class="bc_label">
+                                        Back to Requests List
+                                    </span>
+      </a>
+    </div>
+
+    <!--Show this alert if you already sent an invite to the user, but he has't accepted the invitation-->
+    <div #messageBox tabindex="-1">
+      <div *ngIf="showErrorMessage || showSuccessMessage" class="alert alert-dismissible fade show"
+           role="alert" [class.alert_error]="showErrorMessage" [class.alert_scondary]="showSuccessMessage">
+        <div class="extra_info">
+          <div class="alert_icon">
+            <span class="cust_icon icon_info"></span>
+          </div>
+          <div class="alert_info">
+            <p>{{messageText}}</p>
+          </div>
+        </div>
+        <button class="close" data-dismiss="alert" aria-label="Close" (click)="closeMessageBox()">
+          <i class="cust_icon icon_close icon_xs"></i>
+        </button>
+      </div>
+    </div>
+
+
+    <div class="content_inner">
+      <div class="form_body">
+        <form novalidate autocomplete="off" [formGroup]="newRequestForm">
+          <div class="form_row_group row">
+            <div class="form-group col-md-6">
+              <label class="control-label caps_upper">First Name</label>
+              <input type="text" class="form-control" placeholder="E.g Frank" pattern="^[a-zA-Z]*$"
+                     formControlName="firstName">
+              <p *ngIf="firstName.errors?.required && (firstName.dirty || firstName.touched)"
+                 class="help-block text-error">First name is required</p>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="control-label caps_upper">Last Name</label>
+              <input type="text" class="form-control" placeholder="E.g Donga" pattern="^[a-zA-Z]*$"
+                     formControlName="lastName">
+              <p *ngIf="lastName.errors?.required && (lastName.dirty || lastName.touched)"
+                 class="help-block text-error">Last name is required</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label caps_upper">Phone Number</label>
+            <input type="tel" class="form-control" placeholder="E.g +233501112233" formControlName="phoneNumber">
+            <p *ngIf="phoneNumber.errors?.required && (phoneNumber.dirty || phoneNumber.touched)"
+               class="help-block text-error">Phone Number is
+              required</p>
+          </div>
+          <div class="form-group">
+            <label class="control-label caps_upper" for="channel">Test Channel</label>
+            <!--<input type="tel" class="form-control" placeholder="E.g 07085827380" formControlName="phoneNumber">-->
+            <select class="form-control" formControlName="testChannel" id="channel">
+              <option value="USSD">USSD</option>
+              <option value="IVR" [selected]="true">IVR (Voice Call)</option>
+            </select>
+            <p *ngIf="testChannel.errors?.required && (testChannel.dirty || testChannel.touched)"
+               class="help-block text-error">Test Channel is
+              required</p>
+          </div>
+        </form>
+        <div class="form_cto">
+          <button type="submit" class="btn btn-primary" [ngClass]="{'loading': btnSpinner}"
+                  [disabled]="newRequestForm.invalid || btnSpinner" (click)="submit()">Send Test Request
+            <div class="loader_item">
+              <div class="cm_spinner"></div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

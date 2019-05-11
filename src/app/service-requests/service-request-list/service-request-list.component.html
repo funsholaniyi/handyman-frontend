@@ -1,79 +1,6 @@
 <app-confirm-action [confirmAction]="confirmAction" [confirmMessage]="confirmMessage" [confirmType]="confirmType"
                     [confirmTitle]="confirmTitle" [confirmElementData]="confirmElementData"
                     (confirmResponse)="confirmResponse($event)"></app-confirm-action>
-
-<div class="modal fade" id="report_action" [hidden]="!currentReport">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <header class="modal-header">
-        <h4 class="modal-title">{{currentReport.user[0].firstName + ' ' + currentReport.user[0].lastName}} Report</h4>
-        <button type="button" class="close_dialog" data-dismiss="modal" #closeReportModal></button>
-      </header>
-      <div class="modal-body" style="background-color: #f0f0f0">
-        <section class="dashboard_hero">
-          <div class="firmInfo hero_column">
-            <div class="firmDetails text-center">
-              <div class="firm_logo" *ngIf="currentBusiness">
-                <div *ngIf="currentBusiness.businessName">
-                  <div class="profile_image_thumb">
-                    <div class="user_info_avi">
-                      <span style="background-color: #ff9800; font-size: 72px" class="default_avi">510</span>
-                    </div>
-
-                  </div>
-
-                </div>
-
-              </div>
-              <div class="firmDetailsInfo">
-                <h1 class="title margin_bottom_sm text-uppercase" style="font-size: 24px">Credit Score</h1>
-              </div>
-            </div>
-          </div>
-          <div class="firm_summary hero_column">
-            <div class="snippet_summary col_half mt-auto mb-auto">
-              <div class="detailCol_wrapper ">
-                <header class="">
-                  <span class="list_title color__grey_dark font-regular">Overview</span>
-                </header>
-                <div class="insightSnippet_row insight_row justify-content-between">
-                  <article class="insight_item">
-                    <div class="insight_value">
-                      <span class="value color__black">{{reportData.firmClientCount}}</span>
-                    </div>
-                    <div class="insight_title color__grey_dark">
-                      Questions Answered
-                    </div>
-                  </article>
-                  <article class="insight_item">
-                    <div class="insight_value">
-                      <span class="value color__black">{{reportData.firmMessageCount}}</span>
-                    </div>
-                    <div class="insight_title color__grey_dark">
-                      Market Conditions Data Points Found
-                    </div>
-                  </article>
-                  <article class="insight_item">
-                    <div class="insight_value">
-                      <span class="value color__black">{{reportData.firmUnCompletedApplicationCount}}</span>
-                    </div>
-                    <div class="insight_title color__grey_dark">
-                      KYC Data Points Found
-                    </div>
-                  </article>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" (click)="closeReport()" class="btn btn-inverse">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- Main page content here -->
 <div class="cm_page_body_main">
   <div class="cm_page_body_wrapper">
@@ -96,20 +23,22 @@
 
     <header class="cm_page_header">
       <div class="cm_header_title">
-        <h2 class="section_title font-bold">Customer Reports <span
-          class="has_brackets">{{ customersList?.length}}</span>
+        <h2 class="section_title font-bold">Test Requests <span
+          class="has_brackets">{{ServiceRequestsList?.length}}</span>
         </h2>
       </div>
-
+      <div class="cm_action_primary">
+        <a routerLink="create" class="btn btn-primary">New Request</a>
+      </div>
     </header>
 
-    <div class="empty_state centered text-center" *ngIf="customersList.length === 0">
+    <div class="empty_state centered text-center" *ngIf="ServiceRequestsList.length === 0">
       <div class="def_wrapper">
-        <span class="info_title">Your have no reports yet</span>
-        <p> Send test request to your customers and the results will be shown here.</p>
+        <span class="info_title">You have no pending test requests</span>
+        <p> Send test request to your customers and it will appear here.</p>
         <div class="section_cto">
-          <a routerLink="/test-requests/create" class="btn btn-inverse">
-            Make Test Request
+          <a routerLink="/service-requests/create" class="btn btn-inverse">
+            New Request
           </a>
         </div>
       </div>
@@ -175,7 +104,7 @@
           <!-- Status Column -->
           <ng-container matColumnDef="status">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-            <td mat-cell *matCellDef="let element"> {{element.ifCompleted ? 'Completed' : 'In Complete'}}</td>
+            <td mat-cell *matCellDef="let element"> {{element.ifCompleted ? 'Completed' : 'Pending'}}</td>
           </ng-container>
 
           <!-- Actions Column -->
@@ -183,10 +112,6 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
             <td mat-cell *matCellDef="let element">
               <div class="post_control justify-content-start">
-                <div class="card_control_item">
-                  <a href="#" (click)="selectReport(element.publicId)" data-target="#report_action"
-                     data-toggle="modal">View Report</a>
-                </div>
                 <div class="card_control_item">
                   <a href="#" (click)="confirmDelete(element.publicId)" data-target="#confirm_action"
                      data-toggle="modal">Delete</a>

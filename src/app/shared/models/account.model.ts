@@ -18,11 +18,6 @@ export interface UserResetPasswordModel {
   email: string;
 }
 
-export interface UserBusiness {
-  businessName: string;
-  publicId: string;
-}
-
 
 export class UserProfileModel {
   public publicId: string;
@@ -30,7 +25,6 @@ export class UserProfileModel {
   public lastName: string;
   public email: string;
   public phoneNumber: string;
-  public defaultBusiness: UserBusiness;
 }
 
 export interface MiniUser {

@@ -1,15 +1,13 @@
 import { MiniUser } from './account.model';
 
-export interface CreateTestRequestsModel {
+export interface CreateServiceRequestsModel {
   firstName: string;
   lastName: string;
   phoneNumber: string;
-  businessId: string;
   testChannel: string;
 }
 
-export class TestRequestsModel {
-  businessId: string;
+export class ServiceRequestsModel {
   testChannel: string;
   publicId: string;
   ifCompleted: boolean;

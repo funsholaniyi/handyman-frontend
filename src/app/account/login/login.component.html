@@ -4,7 +4,7 @@
   </div>
   <div class="block_panel">
     <header class="pane_header">
-      <h2 class="section_title font-bold">Login or Register</h2>
+      <h2 class="section_title font-bold">One more thing</h2>
     </header>
     <form novalidate [formGroup]="loginForm">
       <div class=" form-group ">
@@ -22,8 +22,11 @@
         <p *ngIf="password.errors?.required && (password.dirty || password.touched)" class="help-block text-error">
           Please enter a password</p>
       </div>
+      <div class="form-group ">
+        <input name="new_user" id="new_user" type="checkbox" value="true" class="checkbox" formControlName="new_user">
+        <label for="new_user" class="control-label caps_upper">It is my first time here</label>
+      </div>
     </form>
-
 
     <div class="auth_cta ">
       <button class="btn btn-primary" [ngClass]="{'loading': btnSpinner}" (click)="login()"
@@ -31,11 +34,11 @@
         <div class="loader_item">
           <div class="cm_spinner"></div>
         </div>
-        Enter
+        Continue
       </button>
 
       <div class="cta_sub ">
-        <a routerLink="/account/reset-password" class="btn-link btn-block ">Forgot Password?</a>
+        <!--<a routerLink="/account/reset-password" class="btn-link btn-block ">Forgot Password?</a>-->
       </div>
     </div>
     <div class="auth_foot_link ">

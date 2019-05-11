@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { UserBusiness, UserProfileModel } from '../shared/models/account.model';
+import { UserProfileModel } from '../shared/models/account.model';
 import { UserDashboardOverview } from '../shared/models/dashboard';
 import { CurrentUserService } from '../shared/services/current-user.service';
 import { DashboardService } from '../shared/services/dashboard.service';
@@ -12,7 +12,6 @@ import { DashboardService } from '../shared/services/dashboard.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  currentBusiness: UserBusiness;
   dashboardOverView = new UserDashboardOverview();
 
   user = new UserProfileModel();
@@ -23,7 +22,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle('HandyMan | Dashboard');
-    this.currentBusiness = this.currentUserService.getCurrentBusiness();
     this.getCurrentUser();
     this.dashboardService.loadDashboardOverview().subscribe(
       data => {

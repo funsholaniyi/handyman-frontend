@@ -6,9 +6,9 @@ import { Error404Component } from './errors/error-404/error-404.component';
 import { AuthGuard } from './shared/services/auth-guard.service';
 
 const routes: Routes = [
-  {path: '', component: LoginComponent, canActivate: [AuthGuard]},
+  {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
   {
-    path: 'dashboard', component: DashboardComponent,
+    path: 'dashboard', component: DashboardComponent
     // canActivate: [AuthGuard]
   },
   {
@@ -16,13 +16,18 @@ const routes: Routes = [
     loadChildren: './account/account.module#AccountModule'
   },
   {
-    path: 'customers',
-    loadChildren: './business-customers/business-customers.module#BusinessCustomersModule',
+    path: '',
+    loadChildren: './service-requests/service-requests.module#ServiceRequestsModule',
+    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'service-requests',
+    loadChildren: './service-requests/service-requests.module#ServiceRequestsModule'
     // canActivate: [AuthGuard]
   },
   {
     path: 'settings',
-    loadChildren: './settings/settings.module#SettingsModule',
+    loadChildren: './settings/settings.module#SettingsModule'
     // canActivate: [AuthGuard]
   },
   {path: 'not-found', component: Error404Component},

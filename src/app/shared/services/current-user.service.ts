@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Observable, of } from 'rxjs';
 import { isNullOrUndefined } from '../helpers/utils';
-import { UserBusiness, UserProfileModel } from '../models/account.model';
+import { UserProfileModel } from '../models/account.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,10 +27,6 @@ export class CurrentUserService {
       this.currentUser = {
         firstName: 'Funsho',
         lastName: 'Olaniyi',
-        defaultBusiness: {
-          businessName: 'Ministry of Agriculture',
-          publicId: '23243433'
-        },
         phoneNumber: '0501693345',
         email: 'agric@ministry.com',
         publicId: '32423423'
@@ -41,20 +37,6 @@ export class CurrentUserService {
     }
   }
 
-  getCurrentBusiness(): UserBusiness {
-    this.currentUser = {
-      firstName: 'Funsho',
-      lastName: 'Olaniyi',
-      defaultBusiness: {
-        businessName: 'Ministry of Agriculture',
-        publicId: '23243433'
-      },
-      phoneNumber: '0501693345',
-      email: 'agric@ministry.com',
-      publicId: '32423423'
-    };
-    return this.currentUser.defaultBusiness;
-  }
 
   getToken() {
     const tk = this.localStorage.retrieve('_roof_token_');

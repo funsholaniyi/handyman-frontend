@@ -16,6 +16,10 @@
   }
 }
 
+.login-header{
+  margin: 30px 0;
+}
+
 .nav_bar_wrapper {
   @include flexbox();
   z-index: 1;

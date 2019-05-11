@@ -1,0 +1,19 @@
+
+.logo {
+  color: $color_text !important;
+  font-size: 3rem;
+  font-weight: 600;
+  font-family: 'Courier New', sans-serif;
+  text-transform: uppercase;
+  display: block;
+  text-align: center;
+}
+
+.logo-white span {
+  color: #ffffff !important;
+}
+
+.logo span {
+  color: $icon_color;
+  padding: 10px;
+}

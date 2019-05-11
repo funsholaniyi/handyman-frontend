@@ -1,0 +1,244 @@
+.dashboard_hero {
+  @include flexbox();
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+  overflow: hidden;
+  //margin-bottom: 30px;
+
+  @include MQ(M) {
+    flex-direction: row;
+    height: auto;
+  }
+}
+
+.hero_column {
+  flex: 1;
+  flex-basis: 100%;
+  @include flexbox();
+  flex-direction: column;
+  margin: 1px;
+  border-radius: 3px;
+  background-color: white;
+}
+
+.firmInfo {
+  padding: 30px 20px;
+  justify-content: center;
+  align-items: center;
+  @include MQ(M) {
+    width: 30%;
+    max-width: 320px;
+  }
+}
+
+.col_half {
+  @include flexbox();
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+
+  + .col_half {
+    border-top: 2px solid $color_white;
+  }
+
+  @include MQ(M) {
+    height: 50%;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+.detailCol_wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.firmDetails {
+  max-width: 260px;
+  margin: auto;
+  text-align: center;
+}
+
+.firm_logo {
+  margin-bottom: 20px;
+
+  img {
+    display: inline-block;
+    max-width: 100px;
+  }
+}
+
+// Data insights
+.insight_row {
+  @include flexbox();
+  flex-wrap: wrap;
+}
+
+.insightSnippet_row {
+  margin: 0 -10px;
+}
+
+.insight_item {
+  @include flexbox();
+  flex-direction: column;
+
+  .insightSnippet_row & {
+    padding: 10px;
+    width: auto;
+  }
+
+  .text-center & {
+    align-items: center;
+  }
+}
+
+.insight_title {
+  clear: both;
+  font-size: 1em;
+  letter-spacing: -0.015em;
+}
+
+.insight_value {
+  line-height: 1;
+  font-size: 18px;
+
+  @include MQ(M) {
+    font-size: 28px;
+  }
+}
+
+.value {
+  font-weight: 700;
+}
+
+.unit {
+  font-size: .6em;
+  font-weight: 400;
+  text-transform: capitalize;
+  letter-spacing: .025em;
+  opacity: .75;
+  padding-left: 2.5px;
+}
+
+.dataGraphBlock {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  @include flexbox();
+  align-content: center;
+}
+
+.graphRep {
+  flex-shrink: 0;
+  margin-right: 20px;
+}
+
+.graph_holder {
+  width: 128px;
+  position: relative;
+  overflow: hidden;
+}
+
+.graphDetails {
+  flex: 1;
+}
+
+.dataSummary {
+  font-size: 26px;
+  line-height: 1.25;
+  font-weight: 700;
+
+  @include MQ(M) {
+    font-size: 32px;
+  }
+}
+
+// Dashboard panel blocks
+
+.info_panel {
+  margin-bottom: 30px;
+}
+
+.tile_wrapper {
+  display: block;
+  padding: 15px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 1px 1px 3px $border_grey_light;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.tile_icon_bg {
+  padding-bottom: 24px;
+  position: relative;
+
+  img {
+    max-width: 32px;
+    height: 100%;
+    display: block;
+    position: absolute;
+    right: 0;
+  }
+}
+
+.tile_header {
+  @include flexbox();
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.tile_title {
+  font-size: 16px;
+  text-transform: uppercase;
+  color: $color_grey_dark;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+.isColFlex {
+  @include flexbox();
+  flex-direction: column;
+  height: calc(100% - 45px);
+  justify-content: space-between;
+}
+
+.twinPane {
+  @include flexbox();
+  align-items: flex-start;
+  margin: 0 -10px;
+}
+
+.twinPaneItem {
+  padding: 0 10px;
+  flex: 1;
+}
+
+.calendarPane {
+  @include MQ-MAX(S) {
+    display: none;
+  }
+}
+
+.mat-calendar-body-cell-content {
+  border: none !important;
+  border-width: 0 !important;
+
+  &:hover, &:focus {
+    color: $brand_inverse;
+  }
+}
+
+.mat-calendar-body-today {
+  background-color: $brand_primary;
+  color: $color_white;
+}
+
+.mat-calendar-content, .mat-calendar-header {
+  padding: 0 !important;
+}
+
+.mat-calendar-body-label {
+  visibility: hidden;
+}

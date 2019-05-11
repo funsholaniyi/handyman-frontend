@@ -1,0 +1,579 @@
+// antialiasing mode font rendering
+html * {
+  @include font-smoothing;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+mark {
+  padding: 0 5px;
+  border-radius: 5px;
+  background-color: lighten($brand_accent, 35);
+}
+
+time {
+  white-space: nowrap;
+}
+
+body {
+  font-family: $body_font;
+  color: $color_text;
+  font-size: 1.4rem;
+  font-size: 14px;
+  word-spacing: .05em;
+  letter-spacing: .0625em;
+  height: 100%;
+  height: 100vh;
+  width: 100%;
+  font-weight: 400;
+  position: relative;
+  line-height: 1.65;
+  background-color: white;
+  &.scroll_lock {
+    overflow: hidden;
+  }
+}
+
+.has_brackets {
+  font-size: 10px;
+  display: inline-block;
+  line-height: 21px;
+  padding: 0 8px;
+  margin-left: 4px;
+  font-weight: normal;
+  color: $color_grey_dark;
+  background-color: $border_grey_light;
+  border-radius: 5px;
+  vertical-align: middle;
+}
+
+/* Backgrounds */
+
+.bg__default {
+  background-color: $border_grey_light !important;
+}
+
+.bg__white {
+  background-color: white !important;
+}
+
+.bg__off_white {
+  background-color: $brand_primary_light !important;
+}
+
+.bg__primary {
+  background-color: $brand_primary !important;
+}
+
+.bg__secondary {
+  background-color: $brand_accent !important;
+}
+
+.bg__secondary_tinted {
+  background-color: tint($brand_accent, 60%) !important;
+}
+
+.bg__black {
+  background-color: $brand_black !important;
+}
+
+.bg__inverse {
+  background-color: $brand_inverse !important;
+}
+
+.bg__primary_light {
+  background-color: $brand_primary_light !important;
+}
+
+.color__primary {
+  color: $brand_primary !important;
+}
+
+.color__secondary {
+  color: $brand_accent !important;
+}
+
+.color__inverse {
+  color: $brand_inverse !important;
+}
+
+.color__black {
+  color: $brand_black !important;
+}
+
+.color__grey_light {
+  color: $border_grey !important;
+}
+
+.color__grey_dark {
+  color: $border_grey_dark !important;
+}
+
+.color__white {
+  color: $color_white !important;
+}
+
+.color__default {
+  color: $color_text !important;
+}
+
+.font-default {
+  font-size: 14px !important;
+}
+
+.font-sm {
+  font-size: 12px !important;
+}
+
+.font-md {
+  font-size: 16px !important;
+}
+
+.font-lg {
+  font-size: 21px !important;
+}
+
+.font-bold {
+  font-family: $header_font !important;
+  font-weight: 700;
+}
+
+.font-regular {
+  font-family: $body_font !important;
+  font-weight: 400;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.caps_upper {
+  text-transform: uppercase !important;
+}
+
+.caps_normal {
+  text-transform: none !important;
+}
+
+.container {
+  width: auto;
+  position: relative;
+  max-width: 1170px;
+}
+
+.content_narrow {
+  max-width: 960px;
+}
+
+.centered {
+  float: none;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@include MQ-MAX(S) {
+  .hidden-sm {
+    display: none !important;
+  }
+}
+
+@include MQ(M) {
+  .container-fluid {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $header_font;
+  margin: 0;
+  letter-spacing: .02em;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 21px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+h5 {
+  font-size: 16px;
+}
+
+h6 {
+  font-size: 14px;
+}
+
+p {
+  margin: 0;
+  + p {
+    padding-top: .5em;
+  }
+}
+
+.centered {
+  float: none;
+  margin: 0 auto;
+}
+
+address,
+address span {
+  display: block;
+}
+
+.close_dialog {
+  z-index: 5;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  @include image_replacement;
+  @include transition(all .4s);
+  cursor: pointer;
+  &::before,
+  &::after {
+    position: absolute;
+    content: "";
+    width: 2px;
+    background: $border_grey_dark;
+    height: 14px;
+    top: 50%;
+    left: 50%;
+    margin: -7px 0 0 -1px;
+  }
+  &::before {
+    @include transform(rotate(-45deg));
+  }
+  &::after {
+    @include transform(rotate(45deg));
+  }
+  &:hover,
+  &:focus {
+    background-color: rgba($border_grey_dark, .2);
+    &::before,
+    &::after {
+      background-color: $brand_black;
+    }
+  }
+
+  .item_dismiss & {
+    position: relative;
+    top: 3px;
+    left: 0;
+    right: auto;
+  }
+}
+
+.badge {
+  font-size: 11px;
+  border-radius: 5px;
+  padding: .65em 1.4em;
+  background-color: $border_grey;
+  color: inherit;
+  display: inline-block;
+  text-align: center;
+  font-weight: 700;
+}
+
+.badge-primary {
+  background-color: rgba($brand_primary, .15);
+  color: $brand_primary;
+}
+
+.badge-secondary {
+  background-color: rgba($brand_accent, .15);
+  color: $brand_accent;
+}
+
+.badge-danger {
+  background-color: rgba($label_red, .15);
+  color: $label_red;
+}
+
+.badge-black {
+  background-color: rgba($brand_black, .15);
+  color: $brand_black;
+}
+
+mark {
+  padding: .4em 1em;
+  background-color: rgba($brand_primary, .15);
+  color: $brand_primary;
+  font-weight: 700;
+}
+
+.status_tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: $border_grey_dark;
+}
+
+.status_tag-primary {
+  color: $label_red
+}
+
+.status_tag-secondary {
+  color: $label_green
+}
+
+.tag_item {
+  color: $color_text;
+  font-size: 11px;
+  @include flexbox();
+  align-items: center;
+  justify-content: space-between;
+  background-color: $color_white;
+  border-radius: 20px;
+  overflow: hidden;
+
+  &:focus, &:active, &:hover {
+    outline: none;
+
+    .tag_ico {
+      opacity: .6;
+    }
+  }
+}
+
+.tag_color {
+  width: 25px;
+  height: 25px;
+  border-radius: 20px 0 0 20px;
+  margin-left: -4px;
+  background-color: $border_grey_dark;
+}
+
+.tag_empty {
+  background-color: transparent;
+  border: 1px solid $border_grey_dark;
+  color: $color_text !important;
+}
+
+.tag_label {
+  line-height: 25px;
+  padding: 0 20px 0 10px;
+}
+
+.tag_ico {
+  justify-self: flex-end;
+  opacity: .15;
+  @include transition(opacity .4s linear);
+}
+
+.tag_yellow {
+  background-color: $label_yellow;
+  color: $brand_black !important;
+}
+
+.tag_red {
+  background-color: $label_red;
+}
+
+.tag_green {
+  background-color: $label_green;
+}
+
+.tag_purple {
+  background-color: $label_purple;
+}
+
+.tag_default {
+  background-color: $color_grey_dark;
+}
+
+.tag_black {
+  background-color: $brand_black;
+}
+
+.tag_blue {
+  background-color: $label_blue;
+
+}
+
+.tag_pink {
+  background-color: $label_pink;
+}
+
+.tag_like {
+  background-color: $label_like_green;
+}
+
+.tag_orange {
+  background-color: $brand_primary;
+}
+
+.no-padding-top {
+  padding-top: 0 !important;
+}
+
+.margin_top_sm {
+  margin-top: 10px;
+}
+
+.margin_top_md {
+  margin-top: 20px;
+}
+
+.margin_top_lg {
+  margin-top: 30px;
+}
+
+.margin_top_xl {
+  margin-top: 50px;
+}
+
+.margin_bottom_sm {
+  margin-bottom: 10px;
+}
+
+.margin_bottom_md {
+  margin-bottom: 20px;
+}
+
+.margin_left_sm {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.empty_state {
+  position: relative;
+  padding: 40px 0;
+  max-width: 720px;
+
+  .def_wrapper {
+    @include flexbox();
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  .def_img {
+    width: 100px;
+    margin: 20px auto;
+    clear: both;
+  }
+}
+
+.alert {
+  display: block;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: $border_grey_light;
+  margin-bottom: 30px;
+  a {
+    font-weight: 700;
+    color: $brand_black;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.alert_scondary {
+  background-color: rgba($brand_accent, .15);
+}
+
+.alert_error {
+  background-color: rgba($label_red, .15);
+}
+
+.alert_primary {
+  background-color: rgba($brand_primary, .15);
+}
+
+.extra_info {
+  @include flexbox();
+  flex-direction: row;
+}
+
+.alert_icon {
+  flex-shrink: 0;
+  margin-right: 10px;
+  + .alert_text {
+    flex: 1;
+  }
+}
+
+.alert_info {
+  flex: 1;
+}
+
+.alert-dismissible .close {
+  top: 15px;
+}
+
+.icon_box {
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+  @include flexbox;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  background-color: rgba($brand_black, .15);
+  color: $brand_black;
+  fill: $brand_black;
+}
+
+.box_rounded {
+  border-radius: 50% !important;
+}
+
+.box_primary {
+  background-color: rgba($brand_primary, .15);
+  color: $brand_primary;
+  fill: $brand_primary;
+}
+
+.box_secondary {
+  background-color: rgba($brand_accent, .15);
+  color: $brand_accent;
+  fill: $brand_accent;
+}
+
+.box_inverse {
+  background-color: rgba($brand_inverse, .15);
+  color: $brand_inverse;
+  fill: $brand_inverse;
+}

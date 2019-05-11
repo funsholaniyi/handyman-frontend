@@ -1,0 +1,90 @@
+.auth_panel {
+  max-width: 450px;
+  margin: auto;
+}
+
+.block_panel {
+  width: 100%;
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid $border_grey_light;
+  box-shadow: 1px 1px 8px rgba($brand_black, .15);
+
+  @include MQ(M) {
+    padding: 40px;
+  }
+}
+
+.auth_foot_link {
+  margin-top: 30px;
+
+  + .disclaimer_block {
+    border-top: 1px solid $border_grey;
+  }
+}
+
+.pane_header {
+  margin-bottom: 30px;
+}
+
+.error_message {
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: 30px;
+  text-transform: capitalize;
+  clear: both;
+  background-color: transparent;
+  border: 1px solid $brand_inverse;
+  color: $color_white;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+.text-error {
+  font-size: 12px;
+  color: red;
+}
+
+.disclaimer_block {
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.auth_cta {
+  @include flexbox();
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 40px;
+
+  @include MQ-MAX(S) {
+    flex-direction: column;
+  }
+
+  @include MQ(M) {
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+.cta_sub {
+  margin-top: 15px;
+  flex-shrink: 0;
+
+  @include MQ(M) {
+    margin-top: 0;
+    margin-left: 20px;
+    text-align: right;
+  }
+}
+
+.image_blob {
+  text-align: center;
+  margin-bottom: 20px;
+
+  img {
+    max-width: 128px;;
+    display: inline-block;
+  }
+}

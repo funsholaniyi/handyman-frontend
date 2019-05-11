@@ -1,0 +1,122 @@
+<nav class="cm_page_sidebar">
+  <div class="sidebar_wrapper">
+    <div class="cm_user_info">
+      <a href="#" class="info_toggle">
+        <div class="user_info_avi">
+          <!-- Bind the user image here if available -->
+          <!--<img src="" alt="">-->
+          <app-generate-default-picture [firstName]="user.firstName"
+                                        [lastName]="user.lastName"></app-generate-default-picture>
+        </div>
+        <div class="user_info">
+          <span>{{user.firstName}} {{user.lastName}}</span>
+        </div>
+
+      </a>
+      <div class="info_widget">
+        <div class="close_widget">
+          <span class="close_dialog"></span>
+        </div>
+        <div class="info_widget_body">
+          <div class="info_widget_section">
+            <div class="user_profile_details avi_lg">
+              <div class="user_info_avi ">
+                <!-- Bind the user image here if available -->
+                <img src="" alt="">
+                <app-generate-default-picture [firstName]="user.firstName"
+                                              [lastName]="user.lastName"></app-generate-default-picture>
+              </div>
+              <div class="user_info">
+                <span class="username">{{user.firstName}} {{user.lastName}}</span>
+                <a routerLink="/" routerLinkActive="router-link-active"
+                   class="user_action_link">Update your profile</a>
+              </div>
+            </div>
+            <ul class="info_widget_menu">
+              <li>
+                <a routerLink="/">
+                                    <span class="link_icon">
+                                        <i class="cust_icon icon_password"></i>
+                                    </span>
+                  <span class="link_label">Change Password</span>
+                </a>
+              </li>
+              <li>
+                <a routerLink="/account/logout">
+                                    <span class="link_icon">
+                                        <i class="cust_icon icon_off"></i>
+                                    </span>
+                  <span class="link_label">Sign Out</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="info_widget_section">
+            <span class="sec_title">Your Business</span>
+            <div class="user_info">
+              <span class="username">{{user.defaultBusiness.businessName}}</span>
+              <a routerLink="/#/" routerLinkActive="active"
+                 class="user_action_link">Manage Business</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cm_sidebar_navigation">
+      <ul class="sidebar_nav_menu">
+        <li class="sidebar_nav_menu_item" routerLinkActive="active">
+          <a routerLink="/dashboard" class="sidebar_nav_menu_link">
+                        <span class="menu_item_icon">
+                          <i class="material-icons">dashboard</i>
+                        </span>
+            <span class="menu_item_label">Dashboard</span>
+          </a>
+        </li>
+        <li class="sidebar_nav_menu_item" routerLinkActive="active">
+          <a routerLink="/test-requests" class="sidebar_nav_menu_link">
+                        <span class="menu_item_icon">
+                          <i class="material-icons">settings_remote</i>
+                        </span>
+            <span class="menu_item_label">Request Test</span>
+          </a>
+        </li>
+        <li class="sidebar_nav_menu_item" routerLinkActive="active">
+          <a routerLink="/p-tests" class="sidebar_nav_menu_link">
+                        <span class="menu_item_icon">
+                          <i class="material-icons">fitness_center</i>
+                        </span>
+            <span class="menu_item_label">Test Centre</span>
+          </a>
+        </li>
+        <li class="sidebar_nav_menu_item" routerLinkActive="active">
+          <a routerLink="/customers" class="sidebar_nav_menu_link">
+                        <span class="menu_item_icon">
+                          <i class="material-icons">people</i>
+                        </span>
+            <span class="menu_item_label">Customers</span>
+          </a>
+        </li>
+        <li class="sidebar_nav_menu_item" routerLinkActive="active">
+          <a routerLink="/settings" class="sidebar_nav_menu_link">
+                        <span class="menu_item_icon">
+              <i class="material-icons">settings</i>
+                        </span>
+            <span class="menu_item_label">Settings</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="cm_sidebar_footer">
+      <div class="cm_sidebar_inner">
+        <div class="">
+          <a href="#" class="footer_help_link" target="_blank">Get Help</a>
+        </div>
+        <div class="footer_links">
+          <a href="#" target="_blank" class="footer_link_item">Terms</a>
+          <span class="footer_links_seperator">•</span>
+          <a href="#" target="_blank" class="footer_link_item">Privacy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

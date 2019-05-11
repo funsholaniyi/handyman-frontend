@@ -1,0 +1,211 @@
+<app-confirm-action [confirmAction]="confirmAction" [confirmMessage]="confirmMessage" [confirmType]="confirmType"
+                    [confirmTitle]="confirmTitle" [confirmElementData]="confirmElementData"
+                    (confirmResponse)="confirmResponse($event)"></app-confirm-action>
+
+<div class="modal fade" id="report_action" [hidden]="!currentReport">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <header class="modal-header">
+        <h4 class="modal-title">{{currentReport.user[0].firstName + ' ' + currentReport.user[0].lastName}} Report</h4>
+        <button type="button" class="close_dialog" data-dismiss="modal" #closeReportModal></button>
+      </header>
+      <div class="modal-body" style="background-color: #f0f0f0">
+        <section class="dashboard_hero">
+          <div class="firmInfo hero_column">
+            <div class="firmDetails text-center">
+              <div class="firm_logo" *ngIf="currentBusiness">
+                <div *ngIf="currentBusiness.businessName">
+                  <div class="profile_image_thumb">
+                    <div class="user_info_avi">
+                      <span style="background-color: #ff9800; font-size: 72px" class="default_avi">510</span>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+              <div class="firmDetailsInfo">
+                <h1 class="title margin_bottom_sm text-uppercase" style="font-size: 24px">Credit Score</h1>
+              </div>
+            </div>
+          </div>
+          <div class="firm_summary hero_column">
+            <div class="snippet_summary col_half mt-auto mb-auto">
+              <div class="detailCol_wrapper ">
+                <header class="">
+                  <span class="list_title color__grey_dark font-regular">Overview</span>
+                </header>
+                <div class="insightSnippet_row insight_row justify-content-between">
+                  <article class="insight_item">
+                    <div class="insight_value">
+                      <span class="value color__black">{{reportData.firmClientCount}}</span>
+                    </div>
+                    <div class="insight_title color__grey_dark">
+                      Questions Answered
+                    </div>
+                  </article>
+                  <article class="insight_item">
+                    <div class="insight_value">
+                      <span class="value color__black">{{reportData.firmMessageCount}}</span>
+                    </div>
+                    <div class="insight_title color__grey_dark">
+                      Market Conditions Data Points Found
+                    </div>
+                  </article>
+                  <article class="insight_item">
+                    <div class="insight_value">
+                      <span class="value color__black">{{reportData.firmUnCompletedApplicationCount}}</span>
+                    </div>
+                    <div class="insight_title color__grey_dark">
+                      KYC Data Points Found
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" (click)="closeReport()" class="btn btn-inverse">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main page content here -->
+<div class="cm_page_body_main">
+  <div class="cm_page_body_wrapper">
+    <div #messageBox tabindex="-1">
+      <div *ngIf="showErrorMessage || showSuccessMessage" class="alert alert_error alert-dismissible fade show"
+           role="alert">
+        <div class="extra_info">
+          <div class="alert_icon">
+            <span class="cust_icon icon_info"></span>
+          </div>
+          <div class="alert_info">
+            <p>{{messageText}}</p>
+          </div>
+        </div>
+        <button class="close" data-dismiss="alert" aria-label="Close" (click)="closeMessageBox()">
+          <i class="cust_icon icon_close icon_xs"></i>
+        </button>
+      </div>
+    </div>
+
+    <header class="cm_page_header">
+      <div class="cm_header_title">
+        <h2 class="section_title font-bold">Customer Reports <span
+          class="has_brackets">{{ customersList?.length}}</span>
+        </h2>
+      </div>
+
+    </header>
+
+    <div class="empty_state centered text-center" *ngIf="customersList.length === 0">
+      <div class="def_wrapper">
+        <span class="info_title">Your have no reports yet</span>
+        <p> Send test request to your customers and the results will be shown here.</p>
+        <div class="section_cto">
+          <a routerLink="/test-requests/create" class="btn btn-inverse">
+            Make Test Request
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="content_inner ">
+
+      <div class="filter_navigation">
+        <div class="filter_search">
+          <form action="">
+            <div class="search_bar_holder">
+              <button class="search_btn">
+                <svg class="cust_icon" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+                  <g transform="translate(1 1)" fill="none" fill-rule="evenodd">
+                    <path d="M15.364 2.636A9 9 0 1 1 2.636 15.363 9 9 0 0 1 15.364 2.636zM20 20l-5-5"></path>
+                  </g>
+                </svg>
+              </button>
+              <label class="search_input">
+                <input matInput (keyup)="applyFilter($event.target.value)" class="filter_search_input"
+                       placeholder="Filter" title="Filter">
+              </label>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="table table-responsive table-brand">
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 table table-hover">
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let element">
+              <div class="user_profile_details">
+                <div class="user_info_avi">
+                  <!-- Bind the user image here if available -->
+                  <img src="" alt="">
+                  <!--<span class="default_avi">L</span>-->
+                  <app-generate-default-picture [lastName]="element.user[0].lastName"
+                                                [firstName]="element.user[0].firstName"></app-generate-default-picture>
+                </div>
+                <a href="#" class="user_info">
+                                    <span class="info_text">
+                                        <span>{{element.user[0].firstName + ' ' + element.user[0].lastName}}</span>
+                                      <!--<span class="has_brackets">Lead</span>-->
+                                    </span>
+                  <span class="row_caption">Customer Name </span>
+                </a>
+              </div>
+            </td>
+          </ng-container>
+
+          <!-- Phone Column -->
+          <ng-container matColumnDef="phoneNumber">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone</th>
+            <td mat-cell *matCellDef="let element"> {{element.user[0].phoneNumber}}</td>
+          </ng-container>
+          <!-- Channel Column -->
+          <ng-container matColumnDef="channel">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Channel</th>
+            <td mat-cell *matCellDef="let element"> {{element.testChannel}}</td>
+          </ng-container>
+          <!-- Status Column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+            <td mat-cell *matCellDef="let element"> {{element.ifCompleted ? 'Completed' : 'In Complete'}}</td>
+          </ng-container>
+
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+            <td mat-cell *matCellDef="let element">
+              <div class="post_control justify-content-start">
+                <div class="card_control_item">
+                  <a href="#" (click)="selectReport(element.publicId)" data-target="#report_action"
+                     data-toggle="modal">View Report</a>
+                </div>
+                <div class="card_control_item">
+                  <a href="#" (click)="confirmDelete(element.publicId)" data-target="#confirm_action"
+                     data-toggle="modal">Delete</a>
+                </div>
+              </div>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+
+      <div class="section_cto pager">
+        <nav class="pager_nav">
+          <mat-paginator [pageSize]="10"></mat-paginator>
+        </nav>
+      </div>
+    </div>
+
+  </div>
+</div>

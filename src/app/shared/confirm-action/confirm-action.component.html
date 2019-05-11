@@ -1,0 +1,16 @@
+<div class="modal fade" id="confirm_action">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <header class="modal-header">
+        <h4 class="modal-title">{{confirmTitle}}</h4>
+        <button type="button" class="close_dialog" data-dismiss="modal" #closeConfirmModal></button>
+      </header>
+      <div class="modal-body">
+        <p class="font-md">{{confirmMessage}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" (click)="sendDecision()" class="btn btn-inverse">{{confirmAction}}</button>
+      </div>
+    </div>
+  </div>
+</div>

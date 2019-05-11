@@ -1,0 +1,142 @@
+<app-primary-navbar></app-primary-navbar>
+
+<div class="dashboard_page_wrapper">
+  <div class="cm_page_frame">
+    <div class="global_alert">
+    </div>
+    <div class="cm_page_wrapper">
+
+
+      <app-primary-sidebar></app-primary-sidebar>
+
+
+      <div class="cm_page_content">
+        <div class="cm_page_body">
+          <!-- Secondary page sidebar for pages with secondary side navs -->
+
+          <div class="cm_page_body_main">
+            <div class="cm_page_body_wrapper">
+              <header class="cm_page_header">
+                <div class="cm_header_title">
+                  <h3 class="section_title font-bold">Dashboard</h3>
+                </div>
+
+                <div class="cm_action_primary dropdown">
+                  <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">
+                    Create <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a routerLink="/test-requests/create">Test Request</a></li>
+                    <li><a routerLink="/">Question</a></li>
+                  </ul>
+                </div>
+              </header>
+
+              <div class="content_inner ">
+                <div class="info_panel row justify-content-between">
+                  <article class="infoSnippetItem ">
+                    <div class="block_wrapper">
+                      <div class="data_label">
+                        <span>Reports</span>
+                      </div>
+                      <div class="data_value value_md">
+                        <span>{{dashboardOverView.reports}} New {{dashboardOverView.reports === 1 ?'Report':'Reports'}}</span>
+                      </div>
+                      <div class="data_cta">
+                        <a href="#" class="btn-link">View Reports</a>
+                      </div>
+                    </div>
+                  </article>
+                  <article class="infoSnippetItem ">
+                    <div class="block_wrapper">
+                      <div class="data_label">
+                        <span>Requests</span>
+                      </div>
+                      <div class="data_value value_md">
+                        <span>{{dashboardOverView.requests}} Pending Requests</span>
+                      </div>
+                      <div class="data_cta">
+                        <a routerLink="/test-requests/" class="btn-link">View Test Requests</a>
+                      </div>
+                    </div>
+                  </article>
+                  <article class="infoSnippetItem ">
+                    <div class="block_wrapper">
+                      <div class="data_label">
+                        <span>Customers</span>
+                      </div>
+                      <div class="data_value value_md">
+                        <span>{{dashboardOverView.customers}} {{dashboardOverView.customers === 1 ?'Customer':'Customers'}}</span>
+                      </div>
+                      <div class="data_cta">
+                        <a href="#" class="btn-link">View Customers</a>
+                      </div>
+                    </div>
+                  </article>
+                  <article class="infoSnippetItem ">
+                    <div class="block_wrapper">
+                      <div class="data_label">
+                        <span>Wallet Balance</span>
+                      </div>
+                      <div class="data_value value_md">
+                        <span>{{dashboardOverView.walletBalance }} {{dashboardOverView.walletBalance === 1 ?'GHc':'GHc'}}</span>
+                      </div>
+                      <div class="data_cta">
+                        <a href="#" class="btn-link">View Billing</a>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+
+                <section class="row info_tiles_row">
+                  <article class="info_panel col-md-8">
+                    <div class="tile_wrapper">
+
+                      <div class="twinPane">
+                        <div class="twinPaneItem eventPane">
+                          <header class="tile_header">
+                            <span class="tile_title">Reports</span>
+                            <div>
+                              <a routerLink="/calendar" class="btn-link"> View All </a>
+                            </div>
+                          </header>
+                          <div class="empty_state centered text-center">
+                            <div class="def_wrapper">
+                              <p class="font-sm">You have no reports</p>
+                              <div class="margin_top_sm">
+                                <a routerLink="/test-requests/create" class="btn btn-inverse btn-sm">New Test Request</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                  <article class="info_panel col-md-4">
+                    <div class="tile_wrapper">
+                      <header class="tile_header">
+                        <span class="tile_title">Pending Test Requests</span>
+                        <div>
+                          <a routerLink="/" class="btn-link">View All</a>
+                        </div>
+                      </header>
+                      <div class="empty_state centered  text-center ">
+                        <div class="def_wrapper">
+                          <p class="font-sm">You have no pending requests</p>
+                          <div class="margin_top_sm">
+                            <a routerLink="/test-requests/create" class="btn btn-inverse btn-sm">Create a Request</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

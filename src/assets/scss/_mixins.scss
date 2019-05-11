@@ -1,0 +1,134 @@
+// Responsive breakpoints
+$S: 576px;
+$M: 768px; // Phablets
+$L: 992px; // 10" Tablets and desktops
+$XL: 1200px; // desktops..
+
+@mixin MQ($canvas) {
+  @if $canvas==S {
+    /* Mobile devices */
+    @media only screen and (min-width: $S) {
+      @content;
+    }
+  } @else if $canvas==M {
+    /* Tablets and phablets */
+    @media only screen and (min-width: $M) {
+      @content;
+    }
+  } @else if $canvas==L {
+    /* Landscape tablets and desktop or laptops */
+    @media only screen and (min-width: $L) {
+      @content;
+    }
+  } @else if $canvas==XL {
+    /* Landscape tablets and desktop or laptops */
+    @media only screen and (min-width: $XL) {
+      @content;
+    }
+  }
+}
+
+@mixin MQ-MAX($canvas) {
+  @if $canvas==S {
+    /* Mobile devices */
+    @media only screen and (max-width: 575px) {
+      @content;
+    }
+  } @else if $canvas==M {
+    /* Tablets and phablets */
+    @media only screen and (max-width: 767px) {
+      @content;
+    }
+  } @else if $canvas==L {
+    /* Landscape tablets and desktop or laptops */
+    @media only screen and (max-width: 991px) {
+      @content;
+    }
+  } @else if $canvas==XL {
+    /* Landscape tablets and desktop or laptops */
+    @media only screen and (max-width: 1999px) {
+      @content;
+    }
+  }
+}
+
+@mixin bx_s($bxs_type: border-box) {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@mixin text_truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+@mixin clearfix {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+  *zoom: 1;
+}
+
+@mixin drop_transition_y {
+  visibility: hidden;
+  opacity: 0;
+  @include transform-origin(center);
+  @include transform(translateY(-15px));
+  @include transition(all .6s .1s cubic-bezier(.68, .34, .15, 1));
+}
+
+@mixin drop_transition_off {
+  visibility: visible;
+  opacity: 1;
+  @include transform(translateY(0));
+  @include transition(all .6s cubic-bezier(.68, .34, .15, 1));
+}
+
+// antialiasing mode font rendering
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin image_replacement {
+  /* image replacement properties */
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
+
+@mixin center($xy:xy) {
+  @if $xy==xy {
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    @include transform(translateX(-50%) translateY(-50%));
+  } @else if $xy==x {
+    left: 50%;
+    right: auto;
+    @include transform(translateX(-50%));
+  } @else if $xy==y {
+    top: 50%;
+    bottom: auto;
+    @include transform(translateY(-50%));
+  }
+}
+
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}

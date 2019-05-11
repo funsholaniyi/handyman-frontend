@@ -1,0 +1,232 @@
+.bullet_list_item {
+  font-size: 14px;
+  @include flexbox();
+  padding: 2.5px 2.5px;
+  border-radius: 15px;
+  cursor: pointer;
+
+  &:hover, &:focus {
+    background-color: $color_white;
+    .list_label_control {
+      fill: $brand_primary;
+    }
+  }
+
+  &::before {
+    content: "\203A";
+    flex-shrink: 0;
+    @include flexbox();
+    align-self: stretch;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    width: 15px;
+    font: 700 14px san-serif;
+    color: $border_grey;
+    text-align: center;
+  }
+}
+
+.bullet_list_label {
+  flex: 1;
+  font-size: 1em;
+  width: calc(100% - 20px);
+  @include flexbox();
+  align-items: center;
+}
+
+.list_label_control {
+  margin-left: 5px;
+  fill: $border_grey_dark;
+  justify-self: flex-end;
+  flex-shrink: 0;
+  @include transition(all .4s linear);
+
+  > * {
+    display: inline-block;
+    padding: 2.5px;
+  }
+}
+
+// Snippets list
+
+.data_snippet_block {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.block_wrapper {
+  @include flexbox();
+  flex-direction: column;
+  width: 100%;
+  @include transition(all .4s ease);
+
+  &:hover, &:focus {
+    text-decoration: none;
+    .data_cta {
+      color: $brand_primary;
+      text-decoration: underline;
+    }
+  }
+}
+
+.data_label {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: $border_grey_dark;
+  display: block;
+  @include text_truncate();
+
+  .has_icon & {
+    padding-left: 42px;
+  }
+}
+
+.data_value {
+  font-size: 16px;
+  color: $brand_black;
+}
+
+.value_md {
+  font-size: 21px;
+}
+
+.data_cta {
+  font-size: 12px;
+  margin-top: 10px;
+  color: $brand_primary;
+
+  .has_icon & {
+    padding-left: 42px;
+  }
+}
+
+.data_entity {
+  @include flexbox();
+
+  &:hover, &:focus {
+    .entity_options_trigger {
+      fill: $brand_primary;
+    }
+  }
+
+  + .data_entity {
+    margin-top: 10px;
+  }
+}
+
+.data_entity_icon {
+  flex-shrink: 0;
+  fill: $border_grey_dark;
+}
+
+.data_entity_info {
+  flex-grow: 1;
+  width: calc(100% - 30px);
+  position: relative;
+  padding-right: 10px;
+
+  .data_entity & {
+    padding-left: 10px;
+    width: calc(100% - 60px);
+  }
+}
+
+.data_entity_options {
+  width: 30px;
+  justify-self: flex-end;
+  align-self: flex-start;
+  font-size: 12px;
+  text-align: right;
+}
+
+.entity_options_trigger {
+  fill: $border_grey_dark;
+  text-align: center;
+
+  &:hover, &:focus {
+    fill: $brand_primary;
+  }
+}
+
+.infoSnippetItem {
+  padding-left: 15px;
+  padding-right: 15px;
+
+  + .infoSnippetItem {
+    border-left: 1px solid $border_grey;
+  }
+}
+
+.listItem {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.flex_wrapper {
+  @include flexbox();
+  background-color: white;
+  border: 1px solid $border_grey_light;
+  justify-content: space-between;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.list_content {
+  padding: 10px;
+  color: $border_grey_dark;
+  flex-grow: 1;
+  width: calc(100% - 40px);
+  position: relative;
+
+  > * {
+    display: block;
+    clear: both;
+  }
+}
+
+.listTitle {
+  display: block;
+  @include text_truncate();
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.listSub {
+  font-size: 12px;
+  display: block;
+  @include text_truncate();
+}
+
+.itemDismiss {
+  flex-shrink: 0;
+  padding: 2.5px 10px;
+  font-size: 12px;
+  line-height: 1;
+
+  svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  a {
+    @include transition(all .4s linear);
+    fill: $border_grey_dark;
+
+    &:hover, &:focus {
+      fill: $brand_primary;
+    }
+  }
+}
+
+.listItemDismiss {
+  flex-shrink: 0;
+  width: 40px;
+  border-left: 1px solid $border_grey_light;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}

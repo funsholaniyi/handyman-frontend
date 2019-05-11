@@ -1,0 +1,1064 @@
+.info_pane {
+  display: block;
+}
+
+.pane_wrapper {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  box-shadow: 1px 1px 2px rgba($brand_black, .15);
+}
+
+.pane_content {
+  padding: 20px;
+}
+
+.meta_info_list {
+  @include flexbox();
+  flex-wrap: wrap;
+  margin: 10px -10px 0;
+  align-items: center;
+}
+
+.meta_item {
+  padding: 5px 10px;
+  flex: 1;
+}
+
+.info_meta_row {
+  @include flexbox;
+  width: 100%;
+  padding: 10px;
+  position: relative;
+  cursor: pointer;
+  @include transition(all .4s ease-in-out);
+
+  &:hover, &:focus {
+    background-color: $brand_primary_light;
+    .meta_control {
+      opacity: 1;
+    }
+  }
+}
+
+.meta_icon {
+  margin-right: 10px;
+  flex-shrink: 0;
+
+  .cust_icon {
+    opacity: .35;
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.meta_control {
+  align-self: center;
+  margin-left: 10px;
+  opacity: .3;
+}
+
+.meta_details {
+  flex: 1;
+  width: 100%;
+  @include flexbox;
+  flex-direction: column;
+}
+
+.meta_label {
+  color: $border_grey_dark;
+  font-size: 10px;
+}
+
+.info_group_block {
+  @include flexbox;
+  flex-direction: column;
+  padding: 10px 0;
+
+  > .btn-link {
+    display: block;
+    font-size: 10px;
+    opacity: .6;
+
+    &:hover, &:focus {
+      opacity: 1;
+    }
+  }
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.info_block_header {
+  background-color: rgba($border_grey_light, .25);
+  padding: 0 10px;
+  border-radius: 2px;
+
+  .sec_title {
+    color: $brand_black;
+    line-height: 25px;
+  }
+}
+
+// Product card
+
+.card_list_grid {
+  @include flexbox();
+  flex-wrap: wrap;
+}
+
+.cardItem {
+  margin-bottom: 30px;
+
+  .info_panel & {
+    margin-bottom: 15px;
+  }
+}
+
+.cardWrapper {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  border: 1px solid $border_grey_light;
+  width: 100%;
+  height: 100%;
+  @include flexbox();
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+  @include transition(all .4s ease-in-out);
+
+  .userCard & {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .new_card & {
+    box-shadow: unset;
+    border: 2px dashed $border_grey;
+    color: $brand_black;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &:hover, &:focus {
+    background-color: $brand_primary_light;
+    box-shadow: 1px 1px 4px rgba(black, 0.15);
+
+    .new_card & {
+      border-color: $brand_primary;
+      fill: $brand_black;
+      color: $brand_primary;
+    }
+  }
+}
+
+.supCardWrap {
+  position: relative;
+  background: white;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: top center;
+  overflow: hidden;
+  @include flexbox();
+  flex-direction: column;
+  @include transition(all .4s ease-in-out);
+  border: 1px solid $border_grey_light;
+
+  &:hover, &:focus {
+    box-shadow: 1px 1px 4px rgba(black, 0.15);
+
+  }
+}
+
+.card_details {
+  display: block;
+  padding: 20px;
+  width: 100%;
+
+  .file_col_wrapper & {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+  }
+}
+
+.cardFooter, .widget_footer {
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  border-top: 1px solid $border_grey_light;
+}
+
+.flex_buttons {
+  @include flexbox();
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.flex_btn {
+  flex: 1;
+  font-size: 12px;
+
+  > * {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 15px 20px;
+    background-color: white;
+    color: $color_grey_dark;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    &:hover, &:focus {
+      color: $brand_black;
+      background-color: $border_grey_light;
+    }
+  }
+
+  // + .flex_btn a {
+  //     border-left: 1px solid $border_grey_light;
+  // }
+}
+
+.cardRow {
+  width: 100%;
+}
+
+.headerRow {
+  min-height: 10em;
+}
+
+.bodyRow {
+  padding-top: 20px;
+}
+
+.cardTitle {
+  font-size: 21px;
+  margin: 4px 0;
+  display: block;
+  clear: both;
+  max-height: 3.75em;
+  line-height: 1.25em;
+  overflow: hidden;
+}
+
+.cardTitleSub {
+  font-size: 14px;
+  color: $border_grey_dark;
+  clear: both;
+}
+
+.notif_tag_row {
+  font-size: 14px;
+  @include flexbox();
+  align-items: center;
+  @include text_truncate();
+}
+
+.tag_icon {
+  margin-right: 10px;
+}
+
+.cardMetaRow {
+  @include flexbox();
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: 1px solid $border_grey_light;
+}
+
+.cardMetaBlock {
+  flex: 1;
+  padding: 0 5px;
+  text-align: center;
+
+  + .cardMetaBlock {
+    border-left: 1px solid $border_grey_light;
+  }
+}
+
+// File card
+
+.fileCardItem {
+  margin-bottom: 15px;
+  .attachment_tray & {
+    min-width: 250px;
+    padding: 0 15px;
+  }
+}
+
+.fileCard_wrapper {
+  @include flexbox();
+  width: 100%;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid $border_grey_light;
+  border-radius: 10px;
+  position: relative;
+
+  .folder_box & {
+    padding: 20px 15px;
+  }
+}
+
+.file_col_wrapper {
+  display: block;
+  padding: 30px 20px 10px;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid $border_grey_light;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  cursor: pointer;
+  @include transition(all .4s ease-in-out);
+
+  &:hover, &:focus {
+    background-color: $brand_primary_light;
+    box-shadow: 1px 1px 4px rgba(black, 0.15);
+  }
+}
+
+.fileTypeThumb {
+  flex-shrink: 0;
+}
+
+.thumbBox {
+  @include flexbox();
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  width: 48px;
+  border-radius: 10px;
+  background-color: rgba($brand_black, .15);
+  color: $brand_black;
+  text-align: center;
+}
+
+.filetypeValue {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-repeat: no-repeat;
+  background-size: 24px;
+  background-position: center;
+
+  .thumbBox_img & {
+    background-image: url(/assets/img/icons/image.svg);
+    color: transparent;
+  }
+}
+
+.thumbBox_primary, .thumbBox_img {
+  background-color: rgba($brand_primary, .15);
+  color: $brand_primary;
+}
+
+.thumbBox_blue, .thumbBox_doc {
+  background-color: rgba($brand_inverse, .15);
+  color: $brand_inverse;
+}
+
+.thumbBox_green, .thumbBox_xls {
+  background-color: rgba($brand_accent, .15);
+  color: $brand_accent;
+}
+
+.thumbBox_red, .thumbBox_pdf {
+  background-color: rgba($label_red, .15);
+  color: $label_red;
+}
+
+.thumbBox_txt {
+  background-color: rgba($brand_black, .15);
+  color: $brand_black;
+}
+
+.fileCardDetails {
+  width: calc(100% - 48px);
+  @include text_truncate();
+  padding-left: 10px;
+}
+
+.fileName {
+  @include text_truncate();
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.fileSize {
+  font-size: 12px;
+  color: $border_grey_dark;
+  @include text_truncate();
+}
+
+.cardItemAuthor {
+  padding-bottom: 15px;
+  border-bottom: 1px solid $border_grey_light;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 2;
+}
+
+.card_link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.postTitle {
+  font-size: 16px;
+  line-height: 1.5em;
+  letter-spacing: .1rem;
+  margin-bottom: 10px;
+  max-height: 4.5em;
+  overflow: hidden;
+  color: $brand_black;
+}
+
+.postExcerpt {
+  font-size: 1em;
+  line-height: 1.5em;
+  max-height: 4.5em;
+  overflow: hidden;
+  font-weight: 400;
+  text-overflow: ellipsis;
+}
+
+.postInfoMeta {
+  @include flexbox();
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.postMetaItem {
+  color: $color_grey_dark;
+  text-transform: uppercase;
+
+  &:not(:first-child) {
+    margin-left: 20px;
+  }
+}
+
+.metaDate {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.015em;
+}
+
+.metaAttachment {
+  fill: $border_grey_dark;
+  display: none;
+  .has_attachment & {
+    display: block;
+  }
+}
+
+.metaItemCount {
+  display: inline-block;
+  margin-left: 3px;
+}
+
+.postArticle {
+  font-size: 14px;
+  overflow: hidden;
+
+  img {
+    display: inline-block;
+    object-fit: fill;
+    object-position: center center;
+    text-align: center;
+    margin: 20px 0 7.5px;
+  }
+
+  ol, ul {
+    list-style: inherit;
+    padding: 10px 20px;
+
+    li {
+      display: list-item;
+      clear: both;
+      padding-bottom: 5px;
+    }
+  }
+
+  ol {
+    li {
+      list-style: decimal;
+
+      > ol > li {
+        list-style: lower-alpha;
+      }
+    }
+  }
+
+  a {
+    padding-bottom: 1.5px;
+    border-bottom: 1px solid $color_text;
+
+    &:hover, &:focus {
+      color: $color_grey_dark;
+      border-bottom-color: $color_grey_dark;
+    }
+  }
+
+  > h2, > h3, > h4 {
+    margin: 25px 0 10px;
+    text-transform: capitalize;
+    font-weight: 700;
+    color: $brand_black;
+  }
+
+  p:not(:last-of-type) {
+    margin-bottom: 1em;
+  }
+}
+
+.postBlock {
+  clear: both;
+  padding-bottom: 20px;
+}
+
+// Task list card
+
+.task_item {
+  clear: both;
+  margin-bottom: 15px;
+}
+
+.task_list_wrapper {
+  @include flexbox();
+  padding-bottom: 15px;
+  width: 100%;
+  border-bottom: 1px solid $border_grey;
+}
+
+.item_wrapper {
+  @include flexbox;
+  padding: 15px 0;
+  border-radius: 5px;
+  background-color: white;
+  position: relative;
+  cursor: pointer;
+  @include transition(all .4s ease-in-out);
+
+  .task_done & {
+    background-color: $border_grey_light;
+  }
+
+  @include MQ-MAX(S) {
+    flex-direction: column;
+  }
+
+  @include MQ(M) {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &:hover, &:focus {
+    background-color: $brand_primary_light;
+    box-shadow: 1px 1px 4px rgba($brand_black, .2);
+
+    .tast_action_buttons {
+      opacity: 1;
+    }
+  }
+}
+
+.task_detail_block {
+  padding: 0 15px;
+
+  @include MQ-MAX(S) {
+    + .task_detail_block {
+      margin-top: 10px;
+    }
+  }
+
+  @include MQ(M) {
+    width: 20%;
+  }
+}
+
+.tast_members {
+  @include MQ-MAX(S) {
+    padding-left: 47.5px;
+  }
+}
+
+.task_header {
+  @include flexbox();
+  align-items: flex-start;
+  width: 100%;
+
+  @include MQ(M) {
+    width: 60%;
+    overflow: hidden;
+  }
+}
+
+.taskDetails {
+  flex: 1;
+  width: calc(100% - 30px);
+}
+
+.taskStateControl {
+  flex-shrink: 0;
+}
+
+.taskMetaDetails {
+  @include flexbox();
+  @include text_truncate;
+}
+
+.tastTitle {
+  color: $brand_black;
+  font-size: 16px;
+  font-weight: 400;
+
+  .task_late & {
+    color: $label_red;
+  }
+
+  .task_done & {
+    color: $border_grey_dark;
+    text-decoration: line-through;
+  }
+
+  @include MQ(M) {
+    @include text_truncate();
+  }
+}
+
+.taskTags {
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+  color: $border_grey_dark;
+  display: block;
+}
+
+.taskTagItem {
+  color: $brand_accent;
+  text-decoration: underline;
+  display: inline-block;
+
+  &:not(:last-child) {
+    margin-right: 4px;
+  }
+
+  &:hover, &:focus {
+    color: $brand_primary;
+  }
+}
+
+.metaItem {
+  color: $border_grey_dark;
+  font-size: 12px;
+  @include text_truncate;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  span {
+    display: inline-block;
+    &:not(:last-child) {
+      margin-right: 7.5px;
+    }
+  }
+
+  @include MQ-MAX(M) {
+    font-size: 12px;
+  }
+}
+
+.feat_icon {
+  opacity: .5;
+
+  .cust_icon {
+    width: 12px;
+  }
+}
+
+.tast_action_buttons {
+  text-align: right;
+  @include transition(all .4s ease-in-out);
+
+  @include MQ(M) {
+    opacity: .35;
+  }
+}
+
+/* Comment page */
+
+.ds_post_item {
+  @include flexbox();
+  padding: 15px 0;
+  align-items: flex-start;
+
+  + .ds_post_item {
+    border-top: 1px solid $color_white;
+  }
+}
+
+.post_author_thumb {
+  flex-shrink: 0;
+  margin-right: 15px;
+
+  @include MQ-MAX(S) {
+    display: none;
+  }
+}
+
+.post_details {
+  flex: 1;
+  width: 100%;
+}
+
+.post_mention {
+  color: $brand_primary;
+  display: inline;
+  font-weight: 500;
+}
+
+.post_info_meta {
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.author_name {
+  font-size: 14px;
+  font-weight: 600;
+  color: $brand_black;
+  display: inline-block;
+}
+
+.post_time {
+  display: inline-block;
+  font-size: 1em;
+  color: $border_grey_dark;
+  vertical-align: middle;
+
+  &::before {
+    content: "-";
+    padding-right: 2px;
+    margin-left: 2.5px;
+  }
+}
+
+.media_preview {
+  position: relative;
+  padding-bottom: 250px;
+  margin: 0;
+  overflow: hidden;
+  width: 100%;
+
+  img {
+    position: absolute;
+    @include center(xy);
+
+  }
+}
+
+.address_block {
+  @include flexbox();
+  flex-direction: column;
+
+  + .address_block {
+    margin-top: 10px;
+  }
+}
+
+.addr_title {
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: $brand_black;
+}
+
+// Timer
+
+.floating_widget {
+  z-index: 9999;
+  position: fixed;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+  bottom: 20px;
+  left: 0;
+  padding: 15px;
+  visibility: hidden;
+  opacity: 0;
+  @include transform(translateY(40px));
+  @include transition(visibility .3s, opacity .3s, transform .6s);
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  &.timer_active {
+    visibility: visible;
+    opacity: 1;
+    @include transform(translateY(0));
+  }
+
+  @include MQ(M) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+.widget_wrapper {
+  @include flexbox();
+  flex-direction: column;
+  position: relative;
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(black, 0.1), 0 3px 10px 0 rgba(black, 0.2);
+}
+
+.widget_header {
+  padding: 10px 15px;
+}
+
+.widget_body {
+  padding: 15px;
+}
+
+// Pricing card
+
+.pricePlan_card {
+  margin-bottom: 20px;
+}
+
+.plan_wrapper {
+  background-color: white;
+  width: 100%;
+  @include flexbox();
+  flex-direction: column;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid $border_grey_light;
+  box-shadow: 1px 1px 4px rgba(black, 0.15);
+
+  .selected & {
+    border: 4px solid $brand_primary;
+  }
+
+  .pricePlan_card & {
+    height: 100%;
+  }
+}
+
+.plan_header {
+  padding: 30px 15px;
+  text-align: center;
+  height: 11.5em;
+  overflow: hidden;
+}
+
+.planName {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.priceValue {
+  font-size: 26px;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+  line-height: 1.25;
+  color: $brand_black;
+}
+
+.priceSub {
+  font-size: 12px;
+  color: $border_grey_dark;
+}
+
+.plan_note {
+  font-size: 12px;
+}
+
+.docked_btn {
+  padding: 15px 20px;
+  width: 100%;
+  font-size: 12px;
+  display: block;
+  background-color: $brand_primary;
+  color: $brand_primary_light;
+  text-align: center;
+  text-transform: uppercase;
+  @include transition(all .6s ease-in-out);
+
+  &:hover, &:focus {
+    color: white;
+    background-color: $brand_primary_dark;
+  }
+}
+
+.plan_body {
+  background-color: $brand_primary_light;
+  padding: 0 15px;
+  text-align: left;
+}
+
+.priceOptions {
+  @include flexbox;
+  flex-direction: column;
+}
+
+.priceOptionItem {
+  padding: 10px 0;
+  @include flexbox();
+  justify-content: space-between;
+
+  + .priceOptionItem {
+    border-top: 1px solid $border_grey_light;
+  }
+}
+
+.optionInfo {
+  flex: 1;
+  @include flexbox();
+  flex-direction: column;
+
+  .value {
+    font-size: 16px;
+  }
+
+  .unit {
+    font-size: 13px;
+  }
+}
+
+.optionprice {
+  text-align: right;
+}
+
+.header_block {
+  font-size: 26px;
+  line-height: 28px;
+  font-weight: 700;
+  color: $brand_black;
+}
+
+// Events
+
+.verticla_item_list {
+  @include flexbox();
+  flex-direction: column;
+}
+
+.list_item {
+  padding: 10px 0;
+  border-bottom: 1px solid $border_grey_light;
+  display: block;
+  width: 100%;
+}
+
+.listItemWrapper {
+  @include flexbox();
+  width: 100%;
+  // align-items: center;
+}
+
+.eventItemThumb {
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+
+.eventDateThumb {
+  width: 56px;
+  height: 56px;
+  @include flexbox();
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: $brand_primary_dark;
+  color: $color_white;
+  border-radius: 10px;
+}
+
+.eventColorThumb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: $brand_primary_dark;
+}
+
+.event_task {
+  background-color: $brand_inverse;
+}
+
+.event_ruling {
+  background-color: $brand_primary;
+}
+
+.event_judgement {
+  background-color: $label_red;
+}
+
+.eventDateItem {
+  width: 100%;
+  @include text_truncate();
+  letter-spacing: 0;
+  line-height: 1.15;
+  color: inherit;
+}
+
+.eventDateDay {
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.eventDayMonth {
+  font-size: 13px;
+  opacity: .75;
+}
+
+.eventName {
+  font-size: 14px;
+  max-height: 3.75em;
+  overflow: hidden;
+  font-weight: 400;
+  line-height: 1.25em;
+  margin-bottom: 5px;
+}
+
+.eventItemDetails {
+  flex: 1;
+  @include flexbox();
+  flex-direction: column;
+}
+
+.listmeta {
+  font-size: 12px;
+  line-height: 1;
+  color: $border_grey_dark;
+  margin-top: 5px;
+  > * {
+    vertical-align: middle;
+    display: inline-block;
+  }
+}
+
+.listMetaseperator {
+  color: $border_grey_light;
+  padding: 0 4px;
+}

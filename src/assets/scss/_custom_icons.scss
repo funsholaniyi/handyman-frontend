@@ -1,0 +1,112 @@
+/* SVG Icon systems */
+
+.cust_icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: middle;
+  fill: inherit;
+  .icon_holder & {
+    width: 30px;
+    height: 30px;
+  }
+
+  &.tag_ico {
+    width: 10px;
+    height: 10px;;
+  }
+}
+
+svg {
+  display: inline-block;
+  width: 100%;
+}
+
+.icon_xs {
+  width: 16px;
+  height: 16px;
+}
+
+.icon_md {
+  width: 48px;
+  height: 48px;
+}
+
+.icon_lg {
+  width: 64px;
+  height: 64px;
+}
+
+.icon_password {
+  background-image: url(/assets/img/icons/password.svg);
+}
+
+.icon_off {
+  background-image: url(/assets/img/icons/switch_off.svg);
+}
+
+.icon_info {
+  background-image: url(/assets/img/icons/info.svg);
+}
+
+.icon_edit {
+  background-image: url(/assets/img/icons/edit-pencil.svg);
+}
+
+.icon_close {
+  background-image: url(/assets/img/icons/close_icon.svg);
+}
+
+.icon_email {
+  background-image: url(/assets/img/icons/envelope.svg);
+}
+
+.icon_phone {
+  background-image: url(/assets/img/icons/phone.svg);
+}
+
+.icon_address {
+  background-image: url(/assets/img/icons/map.svg);
+}
+
+.icon_tasks {
+  background-image: url(/assets/img/icons/list-add.svg);
+}
+
+.icon_url {
+  background-image: url(/assets/img/icons/link.svg);
+}
+
+.icon_new_file {
+  background-image: url(/assets/img/icons/new_file.svg);
+}
+
+.icon_new_folder {
+  background-image: url(/assets/img/icons/new_folder.svg);
+}
+
+.icon_attachment {
+  background-image: url(/assets/img/icons/attachment.svg);
+}
+
+.icon_folder {
+  background-image: url(/assets/img/icons/folder.svg);
+}
+
+.currency {
+  font-style: normal;
+  &::before {
+    font-size: .7em;
+    color: inherit;
+    font-family: $body_font;
+    vertical-align: text-top;
+    margin-right: -5px;
+  }
+}
+
+.naira::before {
+  content: "\20A6";
+}

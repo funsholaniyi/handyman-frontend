@@ -1,0 +1,1242 @@
+.dropdown-menu {
+  padding: 0;
+  font-size: 1em;
+  box-sizing: border-box;
+  visibility: hidden;
+  z-index: 1000;
+  max-width: 460px;
+  padding: 8px 0;
+  border-radius: 5px;
+  color: $border_grey_dark;
+  background-color: white;
+  box-shadow: 0 0 0 1px rgba(black, 0.1), 0 3px 10px 0 rgba(black, 0.2);
+  @include transition(all .4s ease-in-out);
+  overflow: hidden;
+  border: none;
+
+  &.show {
+    visibility: visible;
+  }
+
+  li {
+    display: block;
+    padding: 0;
+    margin: 0;
+
+    > *, > a {
+      padding: 10px 15px;
+      display: flex;
+      font-size: 14px;
+      color: $color_text;
+      text-transform: capitalize;
+      line-height: normal;
+      align-items: center;
+      white-space: nowrap;
+
+      &:hover {
+        background: $brand_primary_light;
+        color: inherit;
+      }
+    }
+
+    .cust_icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+.icon_holder {
+  flex-shrink: 0;
+  margin-right: 7.5px;
+  opacity: .35;
+}
+
+.nav_item_text {
+  white-space: nowrap;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.caret {
+  display: inline-flex;
+  margin-left: 4px;
+
+  &:after {
+    vertical-align: .255em;
+    content: "";
+    border-top: .4em solid;
+    border-right: .4em solid transparent;
+    border-bottom: 0;
+    border-left: .4em solid transparent
+  }
+}
+
+.modal-backdrop {
+  background-color: $brand_black;
+}
+
+.modal-content {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.modal-dialog {
+  z-index: 2000;
+  margin: 5rem auto;
+}
+
+@include MQ(L) {
+  .modal-md {
+    max-width: 650px;
+  }
+
+  .modal-lg, .modal-xl {
+    max-width: 1170px;
+  }
+}
+
+.modal {
+  .modal-open & {
+    background-color: rgba($brand_black, .90)
+  }
+
+  .modal-header {
+    border-bottom: none;
+    padding: 10px 15px;
+    @include clearfix;
+    justify-content: flex-start;
+
+    @include MQ(M) {
+      padding: 15px 30px;
+    }
+  }
+
+  .modal-body {
+    position: relative;
+    padding: 20px 15px;
+    background: $brand_primary_light;
+    @include MQ(M) {
+      padding: 30px;
+    }
+  }
+
+  .subtitle {
+    margin-bottom: 15px;
+    display: block;
+  }
+
+  .content-panel {
+    min-height: 250px;
+  }
+
+  .modal-footer {
+    border-top: none;
+    padding: 10px 15px;
+  }
+}
+
+.modal-title {
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+}
+
+.panel-group {
+  margin: 0;
+
+  .panel {
+    box-shadow: unset;
+    + .panel {
+      margin: 0;
+    }
+  }
+}
+
+.panel {
+  border: none;
+  background-color: transparent;
+}
+
+.panel-heading {
+  padding: 0 0 5px;
+  border-bottom: 1px solid $border_grey;
+
+  .panel & {
+    border-bottom: 1px solid $border_grey;
+    padding: 15px 0;
+  }
+}
+
+.panel-title {
+  font-size: 16px;
+
+  > a {
+    font-size: 1em;
+
+    &::after {
+      content: "-";
+      float: right;
+      font-size: 21px;
+      line-height: 1;
+    }
+
+    &.collapsed::after {
+      content: "+";
+    }
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      color: inherit;
+      opacity: 1;
+    }
+
+    &:active {
+      outline: none;
+    }
+  }
+}
+
+.accordion-toggle {
+  display: block;
+}
+
+.panel-body {
+  padding: 15px 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+}
+
+.table {
+  margin-bottom: 0;
+
+  > thead, tbody {
+    > tr {
+      > td, > th {
+        color: inherit;
+        border: none;
+        padding: 12px 15px;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  > thead {
+    > tr > th {
+      font-size: 12px;
+      color: $border_grey_dark;
+      text-transform: uppercase;
+      border-bottom: 1px solid $border_grey;
+    }
+  }
+
+  .table {
+    background-color: transparent;
+  }
+}
+
+th.mat-sort-header-sorted {
+  color: $brand_primary;
+}
+
+tr.mat-header-row {
+  height: auto !important;
+}
+
+.mat-input-element {
+  color: $brand_primary;
+}
+
+.mat-checkbox-background, .mat-checkbox-frame {
+  display: none;
+  opacity: 0;
+}
+
+.title_block {
+  width: 25%;
+  max-width: 350px;
+}
+
+.table_description {
+  min-width: 250px;
+
+  @include MQ(M) {
+    font-size: 16px;
+  }
+}
+
+.table-responsive {
+  border: none;
+}
+
+.table-hover {
+  > tbody > tr {
+    cursor: pointer;
+    font-size: 14px;
+    cursor: pointer;
+    position: relative;
+    background-color: white;
+    border-bottom: 1px solid $color_grey_light;
+    @include transition(all .4s ease-in-out 0s);
+
+    .table-brand & {
+      > td {
+        border-right: 1px solid $color_grey_light;
+        vertical-align: middle;
+
+        &:last-child {
+          border-right: none;
+        }
+      }
+    }
+
+    &:hover {
+      background-color: $color_grey_light;
+    }
+  }
+}
+
+.invoice_table {
+  border-collapse: collapse;
+}
+
+.lp_table_row {
+  border-bottom: 0;
+
+  &:last-of-type {
+    border-bottom: 1px solid $border_grey;
+  }
+
+  .lp_table_header & {
+    background-color: $border_grey_light;
+
+    .invoice_templateItems & {
+      background-color: transparent;
+    }
+  }
+}
+
+.lp_table_cell {
+  line-height: 26px;
+
+  .invoice_table > .lp_table_body > .lp_table_row > & {
+    padding: 0;
+  }
+
+  @include MQ(M) {
+    .invoice_templateItems &:first-child {
+      padding-left: 30px;
+    }
+
+    .invoice_templateItems &:last-child {
+      padding-right: 30px;
+    }
+  }
+
+  .invoice_table & {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .lp_table_header & {
+    padding-top: 17px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    font-size: 13px;
+    text-transform: capitalize;
+    color: $brand_black;
+    border-bottom: 2px solid $border_grey;
+  }
+}
+
+.post_control {
+  @include flexbox();
+}
+
+.card_control_item {
+  display: inline-block;
+
+  + .card_control_item::before {
+    content: "|";
+    color: $border_grey_light;
+    padding: 0;
+  }
+
+  > a, > button {
+    padding: 4px 12px;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 25px;
+    color: $border_grey_dark;
+    fill: $border_grey_dark;
+    @include transition(all .4s ease-in-out);
+
+    &:hover, &:focus {
+      background-color: $brand_primary;
+      color: $color_white;
+      fill: white;
+    }
+  }
+}
+
+.grouped_list_item {
+  display: block;
+  clear: both;
+  border-top: 1px solid $border_grey;
+
+  &:last-child {
+    border-bottom: 1px solid $border_grey;
+  }
+}
+
+.collapse_stat_indicator {
+  left: 5px;
+  line-height: 0;
+  opacity: 0;
+  position: absolute;
+  @include center(y);
+  fill: $border_grey_dark;
+  @include transition(all .4s ease-in-out 0s);
+}
+
+.list_header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 10px 0px 10px 25px;
+  border-radius: 5px;
+  @include transition(all .4s ease-in-out 0s);
+
+  &:hover, &:focus {
+    color: $brand_black;
+    background-color: $border_grey_light;
+
+    .collapse_stat_indicator {
+      opacity: 1;
+    }
+  }
+
+  .accordion-toggle {
+    width: 100%;
+    color: inherit;
+
+    .state_icon {
+      @include transform(rotate(0deg));
+      @include transition(all .4s ease-in-out 0s);
+    }
+
+    &.collapsed {
+      .state_icon {
+        @include transform(rotate(-90deg));
+      }
+
+      .collapse_stat_indicator {
+        opacity: 1;
+      }
+    }
+
+  }
+}
+
+.list_panel_body {
+  padding: 20px 25px;
+
+  &.show {
+    border-top: 1px solid $border_grey;
+  }
+}
+
+.list_title {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-weight: 600;
+}
+
+.list_status {
+  position: absolute;
+  right: 10px;
+  @include center(y);
+  color: $color_grey_dark;
+  font-size: 12px;
+}
+
+/*New psot drawer*/
+.post_modal_drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  @include flexbox();
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  @include transition(all .6s ease-in-out);
+  pointer-events: none;
+
+  .show_drawer & {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.post_modal_drawer_backdrop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  background-color: rgba($brand_black, .85);
+  z-index: -1;
+}
+
+.post_modal_drawer_content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: auto;
+  width: 100%;
+  height: 100%;
+
+  @include MQ(M) {
+    width: 40%;
+    min-width: 400px;
+    max-height: 100%;
+    box-shadow: 0 1px 4px 0 rgba($brand_black, .04), 0 2px 2px 0 rgba($brand_black, .08);
+  }
+}
+
+.drawer_content_wrapper {
+  @include flexbox();
+  cursor: default;
+  flex-direction: column;
+  background-color: white;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  height: 100%;
+}
+
+.drawer_header, .drawer_body, .drawer_footer {
+  padding: 20px 15px;
+
+  @include MQ(M) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+.drawer_body {
+  clear: both;
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-top: 0;
+  padding-bottom: 100px;
+}
+
+.drawer_footer {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid $border_grey_light;
+  background-color: white;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 10;;
+}
+
+// Invoice widget
+
+.invoice_widget {
+  width: 100%;
+  @include flexbox();
+  flex-direction: column;
+}
+
+.invoice_widget_header {
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.widget_collapse_header {
+  padding: 10px 15px;
+  background-color: $border_grey;
+}
+
+.widget_collapse {
+  border-radius: 10px;
+  border: 1px solid $border_grey;
+  overflow: hidden;
+}
+
+.widget_body {
+  background-color: white;
+  padding: 20px 15px;
+}
+
+.invoice_detail_column {
+  @include flexbox();
+  flex-direction: column;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.details_col_info {
+  width: 100%;
+
+  + .details_col_info {
+    margin-top: 15px;
+  }
+}
+
+.details_col_cta {
+  margin-top: 15px;
+}
+
+.widget_cta_link {
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: $brand_primary;
+  font-size: 14px;
+  display: inline-block;
+
+  &:hover, &:focus, &:active {
+    outline: none;
+    text-decoration: underline;
+    color: $brand_black;
+  }
+}
+
+.inline_seperator {
+  color: $border_grey_dark;
+  font-size: 16px;
+  vertical-align: middle;
+  padding: 0 5px;
+  display: inline-block;
+}
+
+.logo_placeholder {
+  border-radius: 10px;
+  background-color: $color_white;
+  padding: 20px;
+  max-width: 250px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+
+  img {
+    max-width: 185px;
+    display: inline-block;
+  }
+}
+
+.invoice_widgetcontent {
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid $border_grey;
+}
+
+.invoice_widgetContent_header {
+  padding: 20px 15px;
+}
+
+.menuList_trigger_box {
+  max-width: 320px;
+}
+
+.select_menu_trigger {
+  display: flex;
+  height: 160px;
+  @include transition(all .4s ease-in-out);
+  font-size: 16px;
+  font-weight: 600;
+  &:hover, &:focus {
+    background-color: $brand_primary_light;
+    border-color: $brand_primary;
+  }
+}
+
+@keyframes panel-slide-down {
+  0%, 30% {
+    margin-top: -8px;
+    opacity: 0
+  }
+  to {
+    margin-top: 0;
+    opacity: 1
+  }
+}
+
+.menuList_holder {
+  position: relative;
+  outline: none;
+
+  .tax_add_control & {
+    width: 174px;
+  }
+}
+
+.expense_select {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.menuSelect_input {
+  display: inline-block;
+  box-sizing: border-box;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid $border_grey;
+  border-radius: 4px;
+  cursor: text;
+  padding: 6px 10px;
+  @include transition(border .1s linear);
+  min-height: 40px;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  color: $color_grey_light;
+  font-style: italic;
+  padding-right: 25px;
+  background: white;
+  margin: 0;
+
+  &:hover, &:focus {
+    border-color: $brand_primary;
+  }
+}
+
+.menuSelect_label {
+  display: inline-block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  color: $border_grey_dark;
+}
+
+.menuSelect_inputIcon {
+  color: $border_grey_dark;
+  position: absolute;
+  top: 2.5px;
+  right: 6px;
+  padding-top: 2px;
+}
+
+.widget_select_menu {
+  box-sizing: border-box;
+  display: block;
+  visibility: hidden;
+  position: absolute;
+  z-index: 1000;
+  min-width: 100%;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0 0 0 1px rgba(black, 0.1), 0 3px 10px 0 rgba(black, 0.2);
+  transform-origin: 0 0;
+  height: 0;
+  overflow: hidden;
+  right: 0;
+  left: 0;
+  top: 0;
+  @include transform(translateY(0));
+
+  .menu_is_open & {
+    visibility: visible;
+    height: auto;
+    -webkit-animation: panel-slide-down .1s ease-in-out forwards;
+    animation: panel-slide-down .1s ease-in-out forwards;
+  }
+}
+
+.widget_select_header {
+  padding: 10px;
+}
+
+.select_menu_search {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+}
+
+.search_icon {
+  vertical-align: middle;
+  margin-right: -20px;
+  stroke: $border_grey;
+  stroke-width: 2;
+  position: relative;
+  z-index: 10;
+  left: 10px;
+}
+
+.widget_select_body {
+  box-sizing: border-box;
+  max-height: 500px;
+  overflow: auto;
+}
+
+.widget_select_footer {
+  text-align: center;
+  border-top: 1px solid $border_grey_light;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.invoice_widgetContent_body {
+  margin-top: 15px;
+  position: relative;
+
+  p {
+    margin-right: 15px;
+  }
+}
+
+.invoice_item_name {
+  width: 200px;
+}
+
+.cell_small {
+  width: 100px;
+}
+
+.menu_trigger button {
+  padding: 10px 15px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  @include transition(all .4s ease-in-out);
+
+  &:hover, &:focus {
+    background-color: $brand_primary_light;
+  }
+}
+
+.invoice_total_block {
+  @include flexbox();
+  margin: 20px 0;
+  justify-content: flex-end;
+}
+
+.invoice_total_amount {
+  @include flexbox();
+  flex-direction: column;
+  text-align: right;
+  margin-right: 30px;
+}
+
+.invoice_amount_row {
+  @include flexbox();
+  justify-content: flex-end;
+  align-items: center;
+  line-height: 42px;
+
+  .invoice_templateTotals_taxes & {
+    line-height: normal;
+  }
+}
+
+.invoice_amount_label {
+  max-width: 500px;
+  margin-right: 5px;
+}
+
+.invoice_amount_value {
+  width: 150px;
+  overflow-wrap: break-word;
+}
+
+.invoice_tax_section {
+  display: flex;
+  align-items: flex-end;
+}
+
+.invoice_item_taxes {
+  flex: 1;
+}
+
+.tax_item_row {
+  display: flex;
+  flex-flow: row nowrap;
+
+  + .tax_item_row {
+    margin-top: 15px;
+  }
+}
+
+.tax_add_control {
+  display: flex;
+  align-items: center;
+  flex-flow: row;
+  margin-left: auto;
+}
+
+.tax_add_label {
+  margin-right: 10px;
+}
+
+.tax_item_amount {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 150px;
+  padding-left: 10px;
+  padding-right: 4px;
+}
+
+.tax_item_remove {
+  display: flex;
+  align-items: center;
+  width: 40px;
+  justify-content: flex-end;
+}
+
+.expense_item {
+  @include flexbox();
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7.5px 0;
+}
+
+.expense_item_col {
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 1.4;
+}
+
+.expense_item_info {
+  flex-grow: 1;
+}
+
+.expense_price {
+  width: 100px;
+  flex-shrink: 0;
+  text-align: right;
+  color: $brand_black;
+
+  @include MQ(M) {
+    font-size: 16px;
+  }
+}
+
+.invoice_widgetContent_footer {
+  border-top: 1px solid #d4dde3;
+  padding: 20px 15px;
+}
+
+//Invoice view page
+
+.invoice_view_summary {
+  @include flexbox();
+  margin-bottom: 20px;
+}
+
+.invoice_summary_item + .invoice_summary_item {
+  margin-left: 30px;
+}
+
+.invoice_customer {
+  flex-grow: 2;
+}
+
+.invoice_viewStep_header {
+  @include flexbox();
+  align-items: center;
+}
+
+.invoice_stepBox {
+  counter-increment: steps;
+}
+
+.step_highlighted {
+  box-shadow: 0 8px 21px rgba(black, 0.3);
+  border-radius: 12px;
+  border-color: transparent;
+  background-color: white;
+}
+
+.invoice_viewStep_verticalLine {
+  margin: -15px 0 0 39px;
+  border: 2px solid $border_grey;
+  height: 18px;
+  width: 0;
+}
+
+.step_badge {
+  color: $brand_black;
+  float: left;
+  font-size: 21px;
+  line-height: 50px;
+  margin-right: 18px;
+  text-align: center;
+  border-width: 2px;
+}
+
+.ste_badgeInner {
+  height: 40px;
+  width: 40px;
+  margin: 0 6px;
+  border-width: 2px;
+  border-style: solid;
+  line-height: 36px;
+  border-radius: 50%;
+  border-color: $border_grey;
+  color: $border_grey_dark;
+
+  .step_highlighted & {
+    border-color: $brand_primary;
+    color: $brand_black;
+  }
+
+  .step_done & {
+    color: $color_white;
+    background: $brand_primary;
+    border-color: $brand_primary;
+    line-height: 38px;
+  }
+}
+
+.step_badgeLabel {
+  &::before {
+    content: counter(steps);
+  }
+
+  .step_done &::before {
+    content: "\2713";
+  }
+}
+
+.invoice_viewStep_options {
+  @include flexbox();
+  align-items: center;
+  flex: 1;
+}
+
+.invoice_viewStep_info {
+  flex: 1;
+}
+
+.invoice_viewStep_action {
+  margin-left: 10px;
+  visibility: hidden;
+
+  .step_done &, .step_highlighted &, .box_filled_normal & {
+    visibility: visible;
+  }
+}
+
+.invoice_viewStep_label {
+  font-size: 23px;
+  line-height: 32px;
+  color: $border_grey_dark;
+
+  .step_done &, .step_highlighted & {
+    color: $color_grey_dark;
+  }
+}
+
+.invoice_paymentContent, .invoice_viewStep_body {
+  padding-left: 70px;
+}
+
+.invoice_paymentContent {
+  display: none;
+
+  .step_highlighted & {
+    display: block;
+  }
+}
+
+.invoice_viewStep_body {
+  opacity: .25;
+
+  .invoicePayment_box.step_highlighted & {
+    display: none;
+  }
+
+  .step_done & {
+    opacity: 1;
+  }
+}
+
+.info_dataRow {
+  @include flexbox();
+}
+
+.dataRow_label {
+  font-weight: bold;
+}
+
+.dataRow_value {
+  margin-left: 5px;
+}
+
+// Invoice Preview
+
+.invoice_preview_body {
+  margin: 20px auto;
+  width: 100%;
+  box-shadow: 1px 1px 4px rgba(black, .25);
+}
+
+.invoice_templateWrapper {
+  font-size: 14px;
+  position: relative;
+  min-height: 1024px;
+  box-sizing: border-box;
+  padding-bottom: 200px;
+  background: white;
+}
+
+.invoice_templateHeader {
+  @include flexbox();
+  height: 170px;
+  justify-content: space-between;
+  background-color: $brand_primary_dark;
+}
+
+.invoiceHeader_block {
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+
+  @include MQ(M) {
+    padding: 0 30px;
+  }
+}
+
+.invoice_headerLabel {
+  width: 60%;
+
+}
+
+.invoice_headerAmount {
+  width: 40%;
+  min-width: 150px;
+  background-color: lighten($brand_primary_dark, 3.5);
+}
+
+.invoice_templateMeta {
+  padding: 15px;
+
+  @include MQ(M) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+.invoice_templateTotals {
+  @include flexbox();
+  margin: 25px 0;
+}
+
+.invoice_templateTotals_blanks {
+  flex-grow: 5;
+}
+
+.invoice_templateTotals_amounts {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  margin-right: 15px;
+
+  @include MQ(M) {
+    margin-right: 30px;
+  }
+}
+
+.lb_divider {
+  margin: 10px auto;
+  display: block;
+  width: 100%;
+  height: 0;
+  padding: 0;
+  border-bottom: 3px solid $border_grey;
+  overflow: hidden;
+}
+
+.invoice_templateFooter {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-top: 1px solid $border_grey_light;
+}
+
+.businessInfo {
+  @include flexbox();
+  padding: 25px 15px;
+
+  @include MQ(M) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+.invoice_templateMemo {
+  padding: 25px 15px;
+
+  @include MQ(M) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+}
+
+.businessInfo_block {
+  flex-grow: 1;
+}
+
+.businessInfo_logo {
+  img {
+    max-width: 200px;
+    max-height: 80px;
+  }
+}
+
+.invoice_view_navAction {
+  margin-bottom: 20px;
+}
+
+.invoice_paymentStatus {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.invoice_paymentReminders {
+  padding-top: 15px;
+  border-top: 1px solid $border_grey;
+}
+
+.widget_narrow {
+  max-width: 720px;
+  margin: 0 auto;
+}

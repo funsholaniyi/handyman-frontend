@@ -1,0 +1,367 @@
+.mainHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  //background-color: $brand_primary;
+  width: 100%;
+  text-align: center;
+  z-index: $header-zindex;
+  @include font-smoothing;
+  height: $header_height;
+  //border-bottom: 1px solid $brand_primary_light;
+
+  [class*="container"] {
+    height: 100%;
+    position: relative;
+  }
+}
+
+.nav_bar_wrapper {
+  @include flexbox();
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.navbar_group {
+  width: auto;
+  height: 100%;
+  display: block;
+  @include flexbox();
+  align-items: center;
+  position: relative;
+}
+
+.nav_group_left {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  z-index: 5;
+  float: left;
+  flex-shrink: 0;
+}
+
+.nav_group_right {
+  float: right;
+  justify-content: flex-end;
+  z-index: 5;
+  flex-shrink: 0;
+}
+
+.nav_group_center {
+  flex-grow: 1;
+
+  @include MQ-MAX(S) {
+    width: 100%;
+    position: absolute;
+    left: 0;
+  }
+
+  @include MQ(L) {
+    padding-left: 65px;
+  }
+}
+
+.brand_img {
+  display: block;
+
+  .pane_header & {
+    margin-bottom: 30px;
+  }
+
+  .mainHeader & {
+    height: $header_height;
+    float: left;
+  }
+}
+
+.logo_link {
+  padding: 0;
+  display: inline-block;
+  line-height: $header_height;
+  width: 120px;
+  position: relative;
+  height: 100%;
+
+  @include MQ(M) {
+    width: 200px;
+  }
+
+  > img {
+    vertical-align: middle;
+    display: inline-block;
+  }
+}
+
+.navMenu {
+  vertical-align: middle;
+  line-height: $header_height;
+  @include clearfix;
+  color: rgba($brand_primary_light, .7);
+  fill: rgba($brand_primary_light, .7);
+  @include flexbox();
+  align-items: center;
+
+  &.menu_alt {
+    height: $header_height;
+  }
+
+  .nav_btn {
+    background-color: rgba($brand_primary_light, .15);
+    fill: $border_grey_light;
+    color: $border_grey_light;
+    line-height: 21px;
+    padding: 10px;
+    border-radius: 50%;
+    font-weight: 600;
+    text-transform: uppercase;
+    @include transition(all .4s ease-in-out);
+
+    @include MQ(M) {
+      border-radius: 25px;
+    }
+
+    &:hover, &:focus {
+      background-color: rgba($brand_primary_light, .35);
+      fill: $brand_primary_light;
+      color: $brand_primary_light;
+    }
+  }
+}
+
+.menuList-item {
+  font-size: 12px;
+  position: relative;
+
+  &.is_button {
+    margin-left: 20px;
+  }
+}
+
+.menu__primary {
+  @include transition(all .6s cubic-bezier(.68, .34, .15, 1));
+  transform-origin: top;
+
+  @include MQ-MAX(M) {
+    left: 0;
+    width: 100%;
+    position: fixed;
+    height: 100%;
+    visibility: hidden;
+    top: $header_height;
+    flex-direction: column;
+    background-color: white;
+    border-top: 2px solid $brand_primary;
+    @include transform(scaleY(0));
+  }
+
+  .is-active & {
+    @include transform(scaleY(1));
+    visibility: visible;
+    @include transition(transform .8s cubic-bezier(.68, .34, .15, 1));
+  }
+
+  @include MQ(M) {
+    width: auto;
+    flex-direction: row;
+  }
+}
+
+.menu__link_item:not(.btn) {
+  display: block;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-transform: capitalize;
+  color: inherit;
+
+  .active &,
+  &:hover,
+  &:focus {
+    color: $brand_primary_light;
+    box-shadow: inset 0 -3px 0 $brand_primary;
+  }
+}
+
+.nav_trigger {
+  display: inline-block;
+  margin-left: 20px;
+
+  @include MQ(M) {
+    display: none;
+  }
+}
+
+.primary-nav-trigger {
+  position: relative;
+}
+
+.menu-icon {
+  /* this span is the central line of the menu icon */
+  display: block;
+  width: 24px;
+  height: 1px;
+  margin-top: -10px;
+  position: relative;
+  background-color: $brand_primary;
+  @include transition(background-color .3s);
+  /* these are the upper and lower lines in the menu icon */
+  &::before,
+  &:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: $brand_primary;
+    right: 0;
+    @include transition(transform .3s, top .3s, background-color 0s);
+  }
+  &::before {
+    top: -7px;
+  }
+  &::after {
+    top: 7px;
+  }
+  &.is-clicked {
+    background-color: rgba($brand_primary, 0);
+    &::before,
+    &::after {
+      background-color: rgba($brand_primary, 1);
+    }
+    &::before {
+      top: 0;
+      @include transform(rotate(135deg));
+    }
+    &::after {
+      top: 0;
+      @include transform(rotate(225deg));
+    }
+  }
+}
+
+// Navbar search
+.navbar_search_form {
+  background-color: white;
+  width: 100%;
+  height: $header_height;
+  padding: 8px 10px;
+  z-index: 1;
+  visibility: hidden;
+  @include transform(scaleY(0));
+  transform-origin: top;
+  @include transition(all .6s cubic-bezier(.68, .34, .15, 1));
+
+  .show_search & {
+    @include transform(scaleY(1));
+    visibility: visible;
+    @include transition(transform .6s cubic-bezier(.68, .34, .15, 1));
+  }
+
+  @include MQ(S) {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: block;
+    visibility: visible;
+    @include transform(none);
+    background: transparent;
+    position: relative;
+    max-width: 400px;
+  }
+}
+
+.navbar_search_input {
+  background-color: white;
+  border-radius: 40px;
+  color: $brand_primary_light;
+  border: 1px solid $border_grey_light;
+  display: block;
+  @include text_truncate();
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0 30px;
+
+  &:focus {
+    outline: none;
+    border-color: $brand_primary;
+  }
+}
+
+.navbar_search_btn {
+  margin-top: -10px;
+  border-radius: 0;
+  position: absolute;
+  top: 50%;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  fill: $brand_primary;
+
+  &:hover, &:focus {
+    fill: $brand_primary_light;
+  }
+}
+
+.navbar_search_submit {
+  left: 20px;
+}
+
+.navbar_search_reset {
+  right: 13px;
+  opacity: 0;
+  visibility: hidden;
+  @include transition(all .4s ease);
+
+  .has_value & {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.control_btn {
+  margin-left: 20px;
+  position: relative;
+
+  > a:not(.nav_btn) {
+    fill: $brand_primary;
+    color: $brand_primary;
+
+    &:hover, &:focus {
+      fill: $brand_primary_light;
+      color: $brand_primary_light;
+    }
+  }
+
+  @include MQ(M) {
+    margin-left: 40px;
+  }
+}
+
+.btn_search_trigger {
+  @include MQ(M) {
+    display: none;
+  }
+}
+
+.badge_count {
+  padding: .5em;
+  display: inline-block;
+  background-color: $brand_primary_light;
+  color: $color_white;
+  font-size: 9px;
+  line-height: 7.5px;
+  border-radius: 25px;
+  vertical-align: super;
+  margin-left: -8px;
+
+}
+
+.control_label {
+  margin-left: 5px;
+
+  @include MQ-MAX(M) {
+    display: none;
+  }
+}

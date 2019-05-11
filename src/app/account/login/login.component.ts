@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { UserProfileModel } from '../../shared/models/account.model';
 import { AccountService } from '../../shared/services/account.service';
 import { CurrentUserService } from '../../shared/services/current-user.service';
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   showSuccessMessage: boolean;
   showErrorMessage: boolean;
   btnSpinner: boolean;
-  phoneVal: string;
+  navigationExtras: NavigationExtras;
 
   @ViewChild('messageBox') messageBox: ElementRef;
 
@@ -26,11 +26,12 @@ export class LoginComponent implements OnInit {
               private titleService: Title, private service: AccountService, private router: Router,
               private fb: FormBuilder, private activatedRoute: ActivatedRoute, private accountService: AccountService,
               private currentUser: CurrentUserService) {
-    this.phoneVal = this.activatedRoute.snapshot.paramMap.get('phone');
-
+    const handymanId = this.activatedRoute.snapshot.queryParamMap.get('handyman');
+    this.navigationExtras = {
+      queryParams: {'handymanId': handymanId}
+    };
     this.loginForm = fb.group({
-      phone: [this.phoneVal, [Validators.required,
-        Validators.pattern(/^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$/)]],
+      phone: ['', Validators.required],
       password: ['', Validators.required],
       new_user: ['']
     });
@@ -71,7 +72,7 @@ export class LoginComponent implements OnInit {
             this.currentUser.addUserProfile(_data);
             // this.currentUser.addphone(_data.phone);
             this.btnSpinner = false;
-            this.router.navigate(['/']);
+            this.router.navigate(['/'], this.navigationExtras);
           }
         },
         error => {
@@ -98,7 +99,7 @@ export class LoginComponent implements OnInit {
             this.currentUser.addUserProfile(_data);
             // this.currentUser.addphone(_data.phone);
             this.btnSpinner = false;
-            this.router.navigate(['/']);
+            this.router.navigate(['/'], this.navigationExtras);
           }
         },
         error => {

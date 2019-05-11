@@ -10,8 +10,8 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-    const url: string = state.url;
-    return this.checkLogin(url);
+    const queryParams = next.queryParams;
+    return this.checkLogin(queryParams);
   }
 
   canActivateChild(
@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     return this.canActivate(route, state);
   }
 
-  checkLogin(url: string): boolean {
+  checkLogin(queryParams): boolean {
     if (this.authService.isLoggedIn()) {
       return true;
     }
@@ -34,7 +34,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     // Set our navigation extras object
     // that contains our global query params and fragment
     const navigationExtras: NavigationExtras = {
-      // queryParams: {'session_id': sessionId},
+      queryParams: queryParams,
       // fragment: 'anchor'
     };
 

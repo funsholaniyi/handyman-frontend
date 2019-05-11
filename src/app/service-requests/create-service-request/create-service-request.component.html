@@ -2,16 +2,18 @@
   <div class="cm_page_body_wrapper">
 
     <div class="detail_control">
-      <a routerLink="/service-requests"
+      <a routerLink="/service-requests/history"
          class="back_btn" title="Go Back">
                                     <span class="back_icon">
                                         <i class="material-icons">arrow_back</i>
                                     </span>
         <span class="bc_label">
-                                        Back to Requests List
+                                        Back to Requests History
                                     </span>
       </a>
     </div>
+
+
 
     <!--Show this alert if you already sent an invite to the user, but he has't accepted the invitation-->
     <div #messageBox tabindex="-1">
@@ -32,47 +34,64 @@
     </div>
 
 
+
+
     <div class="content_inner">
+
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-lg-8 col-md-6">
+              <h3 class="mb-0 text-truncated">{{theHandyman.username}}</h3>
+              <p class="lead text-uppercase">{{theHandyman.occupation}}</p>
+              <p>
+                I am skilled and professional
+              </p>
+              <p>Hourly Rate <span class="badge badge-info tags">NGN {{theHandyman.hourlyRate}}</span>
+                Base Rate <span class="badge badge-info tags">NGN {{theHandyman.baseRate}}</span>
+              </p>
+            </div>
+            <div class="col-12 col-lg-4 col-md-6 text-center">
+              <img src="https://robohash.org/68.186.255.198.png" style="height: 100px; width: auto" alt="" class="mx-auto rounded-circle img-fluid">
+              <br>
+              <ul class="list-inline ratings text-center" title="Ratings">
+
+                <li  class="list-inline-item"><a href="#"><span class="fa fa-star"></span></a>
+                </li>
+              </ul>
+            </div>
+            <!--/col-->
+          </div>
+          <!--/row-->
+        </div>
+        <!--/card-block-->
+      </div>
       <div class="form_body">
         <form novalidate autocomplete="off" [formGroup]="newRequestForm">
-          <div class="form_row_group row">
-            <div class="form-group col-md-6">
-              <label class="control-label caps_upper">First Name</label>
-              <input type="text" class="form-control" placeholder="E.g Frank" pattern="^[a-zA-Z]*$"
-                     formControlName="firstName">
-              <p *ngIf="firstName.errors?.required && (firstName.dirty || firstName.touched)"
-                 class="help-block text-error">First name is required</p>
-            </div>
-            <div class="form-group col-md-6">
-              <label class="control-label caps_upper">Last Name</label>
-              <input type="text" class="form-control" placeholder="E.g Donga" pattern="^[a-zA-Z]*$"
-                     formControlName="lastName">
-              <p *ngIf="lastName.errors?.required && (lastName.dirty || lastName.touched)"
-                 class="help-block text-error">Last name is required</p>
-            </div>
+          <div class="form-group">
+            <label class="control-label caps_upper">Service Type</label>
+            <input type="text" class="form-control" formControlName="serviceType">
           </div>
           <div class="form-group">
-            <label class="control-label caps_upper">Phone Number</label>
-            <input type="tel" class="form-control" placeholder="E.g +233501112233" formControlName="phoneNumber">
-            <p *ngIf="phoneNumber.errors?.required && (phoneNumber.dirty || phoneNumber.touched)"
-               class="help-block text-error">Phone Number is
-              required</p>
-          </div>
-          <div class="form-group">
-            <label class="control-label caps_upper" for="channel">Test Channel</label>
-            <!--<input type="tel" class="form-control" placeholder="E.g 07085827380" formControlName="phoneNumber">-->
-            <select class="form-control" formControlName="testChannel" id="channel">
-              <option value="USSD">USSD</option>
-              <option value="IVR" [selected]="true">IVR (Voice Call)</option>
-            </select>
-            <p *ngIf="testChannel.errors?.required && (testChannel.dirty || testChannel.touched)"
-               class="help-block text-error">Test Channel is
-              required</p>
+            <label class="control-label caps_upper">Describe Issue</label>
+            <textarea class="form-control" formControlName="description" rows="10"></textarea>
+            <p *ngIf="description.errors?.required && (description.dirty || description.touched)"
+               class="help-block text-error">Description is required</p>
           </div>
         </form>
         <div class="form_cto">
-          <button type="submit" class="btn btn-primary" [ngClass]="{'loading': btnSpinner}"
-                  [disabled]="newRequestForm.invalid || btnSpinner" (click)="submit()">Send Test Request
+          <button angular4-paystack
+            type="submit" class="btn btn-primary" [ngClass]="{'loading': btnSpinner}"
+                  [disabled]="newRequestForm.invalid || btnSpinner"
+                  [key]="'pk_test_662a2d8fe3a48a8dee0f29e647466cde5b055614'"
+                  [email]="theHandyman.email"
+                  [amount]="200000"
+                  [ref]="currentReference"
+                  [channels]="['bank', 'card']"
+                  [class]="'btn btn-primary'"
+                  (close)="paymentCancel()"
+                  (callback)="paymentDone($event)"
+          >Request and Make NGN 2000 Deposit
             <div class="loader_item">
               <div class="cm_spinner"></div>
             </div>

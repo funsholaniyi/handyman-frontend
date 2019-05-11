@@ -8,8 +8,8 @@ import { AuthGuard } from './shared/services/auth-guard.service';
 const routes: Routes = [
   {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
   {
-    path: 'dashboard', component: DashboardComponent
-    // canActivate: [AuthGuard]
+    path: 'dashboard', component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'account',
@@ -18,17 +18,17 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: './service-requests/service-requests.module#ServiceRequestsModule',
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'service-requests',
-    loadChildren: './service-requests/service-requests.module#ServiceRequestsModule'
-    // canActivate: [AuthGuard]
+    loadChildren: './service-requests/service-requests.module#ServiceRequestsModule',
+    canActivate: [AuthGuard]
   },
   {
     path: 'settings',
-    loadChildren: './settings/settings.module#SettingsModule'
-    // canActivate: [AuthGuard]
+    loadChildren: './settings/settings.module#SettingsModule',
+    canActivate: [AuthGuard]
   },
   {path: 'not-found', component: Error404Component},
   {path: '**', component: Error404Component}

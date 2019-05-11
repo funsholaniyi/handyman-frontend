@@ -23,14 +23,7 @@ export class CurrentUserService {
   getCurrentUser(): Observable<UserProfileModel> {
     const value = this.localStorage.retrieve('_roof_profile_');
     if (value !== '' || ' ') {
-      // this.currentUser = JSON.parse(value);
-      this.currentUser = {
-        firstName: 'Funsho',
-        lastName: 'Olaniyi',
-        phoneNumber: '0501693345',
-        email: 'agric@ministry.com',
-        publicId: '32423423'
-      };
+      this.currentUser = JSON.parse(value);
       return of(this.currentUser);
     } else {
       return of(null);
@@ -64,9 +57,9 @@ export class CurrentUserService {
   }
 
   addUserProfile(userProfile: UserProfileModel) {
+    console.log('storing');
     this.localStorage.store('_roof_profile_', JSON.stringify(userProfile));
   }
-
 
   addEmail(email: string) {
     console.log(email);

@@ -20,16 +20,6 @@
                 <div class="cm_header_title">
                   <h3 class="section_title font-bold">Dashboard</h3>
                 </div>
-
-                <div class="cm_action_primary dropdown">
-                  <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">
-                    Create <span class="caret"></span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a routerLink="/test-requests/create">Test Request</a></li>
-                    <li><a routerLink="/">Question</a></li>
-                  </ul>
-                </div>
               </header>
 
               <div class="content_inner ">
@@ -37,13 +27,13 @@
                   <article class="infoSnippetItem ">
                     <div class="block_wrapper">
                       <div class="data_label">
-                        <span>Reports</span>
+                        <span>Completed Services</span>
                       </div>
                       <div class="data_value value_md">
-                        <span>{{dashboardOverView.reports}} New {{dashboardOverView.reports === 1 ?'Report':'Reports'}}</span>
+                        <span>{{dashboardOverView.reports}} New {{dashboardOverView.reports === 1 ?'Completed Service':'Completed Services'}}</span>
                       </div>
                       <div class="data_cta">
-                        <a href="#" class="btn-link">View Reports</a>
+                        <a href="#" class="btn-link">View Completed Services</a>
                       </div>
                     </div>
                   </article>
@@ -56,30 +46,30 @@
                         <span>{{dashboardOverView.requests}} Pending Requests</span>
                       </div>
                       <div class="data_cta">
-                        <a routerLink="/test-requests/" class="btn-link">View Test Requests</a>
+                        <a routerLink="/test-requests/" class="btn-link">View Service Requests</a>
                       </div>
                     </div>
                   </article>
-                  <article class="infoSnippetItem ">
-                    <div class="block_wrapper">
-                      <div class="data_label">
-                        <span>Customers</span>
-                      </div>
-                      <div class="data_value value_md">
-                        <span>{{dashboardOverView.customers}} {{dashboardOverView.customers === 1 ?'Customer':'Customers'}}</span>
-                      </div>
-                      <div class="data_cta">
-                        <a href="#" class="btn-link">View Customers</a>
-                      </div>
-                    </div>
-                  </article>
+                  <!--<article class="infoSnippetItem ">-->
+                    <!--<div class="block_wrapper">-->
+                      <!--<div class="data_label">-->
+                        <!--<span>Customers</span>-->
+                      <!--</div>-->
+                      <!--<div class="data_value value_md">-->
+                        <!--<span>{{dashboardOverView.customers}} {{dashboardOverView.customers === 1 ?'Customer':'Customers'}}</span>-->
+                      <!--</div>-->
+                      <!--<div class="data_cta">-->
+                        <!--<a href="#" class="btn-link">View Customers</a>-->
+                      <!--</div>-->
+                    <!--</div>-->
+                  <!--</article>-->
                   <article class="infoSnippetItem ">
                     <div class="block_wrapper">
                       <div class="data_label">
                         <span>Wallet Balance</span>
                       </div>
                       <div class="data_value value_md">
-                        <span>{{dashboardOverView.walletBalance }} {{dashboardOverView.walletBalance === 1 ?'GHc':'GHc'}}</span>
+                        <span>{{dashboardOverView.walletBalance }} {{dashboardOverView.walletBalance === 1 ?'NGN':'NGN'}}</span>
                       </div>
                       <div class="data_cta">
                         <a href="#" class="btn-link">View Billing</a>
@@ -96,16 +86,16 @@
                       <div class="twinPane">
                         <div class="twinPaneItem eventPane">
                           <header class="tile_header">
-                            <span class="tile_title">Reports</span>
+                            <span class="tile_title">Service History</span>
                             <div>
                               <a routerLink="/calendar" class="btn-link"> View All </a>
                             </div>
                           </header>
                           <div class="empty_state centered text-center">
                             <div class="def_wrapper">
-                              <p class="font-sm">You have no reports</p>
+                              <p class="font-sm">You have not requested any service yet</p>
                               <div class="margin_top_sm">
-                                <a routerLink="/test-requests/create" class="btn btn-inverse btn-sm">New Test Request</a>
+                                <a routerLink="/test-requests/create" class="btn btn-inverse btn-sm">Request HandyMan Service</a>
                               </div>
                             </div>
                           </div>
@@ -115,17 +105,12 @@
                   </article>
                   <article class="info_panel col-md-4">
                     <div class="tile_wrapper">
-                      <header class="tile_header">
-                        <span class="tile_title">Pending Test Requests</span>
-                        <div>
-                          <a routerLink="/" class="btn-link">View All</a>
-                        </div>
-                      </header>
+
                       <div class="empty_state centered  text-center ">
                         <div class="def_wrapper">
-                          <p class="font-sm">You have no pending requests</p>
+                          <p class="font-sm">You have a pending urgent request or feedback?</p>
                           <div class="margin_top_sm">
-                            <a routerLink="/test-requests/create" class="btn btn-inverse btn-sm">Create a Request</a>
+                            <a routerLink="/test-requests/create" class="btn btn-inverse btn-sm">Talk to Us</a>
                           </div>
                         </div>
                       </div>
